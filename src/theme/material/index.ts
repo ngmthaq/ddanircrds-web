@@ -1,4 +1,5 @@
 import { Palette, createTheme } from "@mui/material/styles";
+import { EventBusUtils, StorageUtils } from "@/common/utils";
 import { breakpointValues } from "./configs/breakpoints";
 import { zIndex } from "./configs/z-index";
 import {
@@ -17,7 +18,6 @@ import {
   darkPaletteSuccess,
   darkPaletteWaring,
 } from "./configs/palette-dark";
-import { EventBusUtils, StorageUtils } from "@/common/utils";
 
 export const getDefaultTheme = (mode: Palette["mode"]) => {
   return createTheme({ palette: { mode } });

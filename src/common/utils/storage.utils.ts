@@ -19,7 +19,6 @@ export function getStorage<T>(key: KeyStorageType): T | null {
     const json = Cookie.get(key);
     if (!json) return null;
     const ref: any = JSON.parse(json);
-    process.env.NODE_ENV === "development" && console.info({ key, ref });
     return ref && ref.value ? ref.value : null;
   } catch (error) {
     console.error(error);

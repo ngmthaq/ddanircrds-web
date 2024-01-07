@@ -2,14 +2,14 @@ import React, { FC, Fragment } from "react";
 import ReactDOM from "react-dom/client";
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
+import { useTheme } from "./common/hooks";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { useTheme } from "./common/hooks";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 
 const Root: FC = () => {
-  const theme = useTheme();
+  const { theme } = useTheme();
 
   return (
     <Fragment>

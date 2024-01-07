@@ -1,8 +1,5 @@
-import React, { FC } from "react";
-import { HomepageContext, HomepageContextType } from "./HomePage.context";
+import { HomePage } from "./HomePage";
+import { HomePageAction } from "./Homepage.action";
+import { HomePageLoader } from "./Homepage.loader";
 
-export const Homepage: FC = () => {
-  const HomepageContextValue: HomepageContextType = {};
-
-  return <HomepageContext.Provider value={HomepageContextValue}></HomepageContext.Provider>;
-};
+export { HomePage, HomePageLoader, HomePageAction };

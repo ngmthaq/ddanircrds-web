@@ -1,7 +1,7 @@
 {
   "extends": ["react-app", "react-app/jest", "prettier", "plugin:prettier/recommended"],
   "rules": {
-    "no-console": ["warn", { "allow": ["warn", "error", "info", "table"] }],
+    "no-console": ["warn", { "allow": ["warn", "error", "info", "trace"] }],
     "prettier/prettier": ["error", { "endOfLine": "auto" }]
   }
 }
