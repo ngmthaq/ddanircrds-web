@@ -7,7 +7,7 @@ const routes = Object.values(paths).map((path) => {
     ...path,
     loader: async (context: any) => {
       const deferLoader = async () => {
-        await CommonUtils.delay(5);
+        await CommonUtils.delay(6);
         return path.loader ? path.loader(context) : undefined;
       };
       return defer({ data: deferLoader() });

@@ -18,6 +18,8 @@ const Page: LoaderFC<{ a: string }> = ({ loaderData }) => {
     }
   };
 
+  console.info(loaderData);
+
   return (
     <HomepageContext.Provider value={HomepageContextValue}>
       <Greeting variant="h1">Hello World</Greeting>

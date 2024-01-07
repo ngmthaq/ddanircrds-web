@@ -16,8 +16,8 @@ const Container = styled(Box)(({ theme }) => ({
 }));
 
 const Wrapper = styled(Box)(() => ({
-  width: "160px",
-  height: "160px",
+  width: "200px",
+  height: "200px",
   borderRadius: "50%",
   overflow: "hidden",
 }));
@@ -31,8 +31,8 @@ export const GifLoading: FC = () => {
             <img
               width={"100%"}
               height={"100%"}
+              alt="loading.gif"
               src={LaunchingRockerGif}
-              alt="launching-rocket.gif"
               style={{ objectFit: "cover" }}
             />
           </Wrapper>
