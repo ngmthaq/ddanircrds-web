@@ -1,6 +1,6 @@
 import { FC, Suspense } from "react";
 import { Await, useLoaderData } from "react-router-dom";
-import { CicurlarLoading } from "../common";
+import { CicurlarLoading } from "../generics";
 
 export type LoaderFC<L> = FC<{ loaderData: L }>;
 
