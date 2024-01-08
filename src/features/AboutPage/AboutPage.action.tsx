@@ -1,5 +1,5 @@
 import { ActionFunction } from "react-router-dom";
 
-export const AboutPageAction: ActionFunction = async (context) => {
+export const useAboutPageAction: ActionFunction = async (context) => {
   return {};
 };
