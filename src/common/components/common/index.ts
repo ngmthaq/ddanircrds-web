@@ -1,3 +1,3 @@
-import { GifLoading } from "./GifLoading";
+import { CicurlarLoading } from "./CicurlarLoading";
 
-export { GifLoading };
+export { CicurlarLoading };
