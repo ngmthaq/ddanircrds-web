@@ -2,13 +2,13 @@ import React from "react";
 import { Button } from "@mui/material";
 import { useTheme } from "@/common/hooks";
 import { LoaderFC, withRouterLoader } from "@/common/components/hoc";
-import { HomePageContext, HomePageContextType } from "./HomePage.context";
-import { Greeting } from "./HomePage.styled";
+import { AboutPageContext, AboutPageContextType } from "./AboutPage.context";
+import { Greeting } from "./AboutPage.styled";
 
 const Page: LoaderFC<{ a: string }> = ({ loaderData }) => {
   const { mode, changeTheme } = useTheme();
 
-  const HomePageContextValue: HomePageContextType = {};
+  const AboutPageContextValue: AboutPageContextType = {};
 
   const handleChangeTheme = () => {
     if (mode === "light") {
@@ -21,13 +21,13 @@ const Page: LoaderFC<{ a: string }> = ({ loaderData }) => {
   console.info(loaderData);
 
   return (
-    <HomePageContext.Provider value={HomePageContextValue}>
+    <AboutPageContext.Provider value={AboutPageContextValue}>
       <Greeting variant="h1">Hello World</Greeting>
       <Button variant="contained" onClick={handleChangeTheme}>
         Change Theme
       </Button>
-    </HomePageContext.Provider>
+    </AboutPageContext.Provider>
   );
 };
 
-export const HomePage = withRouterLoader(Page);
+export const AboutPage = withRouterLoader(Page);

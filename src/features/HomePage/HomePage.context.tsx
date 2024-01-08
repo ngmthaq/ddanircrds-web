@@ -1,5 +1,5 @@
 import { createContext } from "react";
 
-export type HomepageContextType = {};
+export type HomePageContextType = {};
 
-export const HomepageContext = createContext({});
+export const HomePageContext = createContext({});
