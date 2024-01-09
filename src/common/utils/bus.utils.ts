@@ -1,6 +1,6 @@
 export type EventBusCallbackType<T> = (params: T) => void;
 
-export type EventBusNameType = "changeTheme";
+export type EventBusNameType = "changeTheme" | "openSnackbar";
 
 class EventBusGenerator {
   private events: Record<string, EventBusCallbackType<any>[]> = {};

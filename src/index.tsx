@@ -5,6 +5,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { useTheme } from "./common/hooks";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { NotistackProvider } from "./common/components/providers";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 
@@ -14,8 +15,10 @@ const Root: FC = () => {
   return (
     <Fragment>
       <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <App />
+        <NotistackProvider>
+          <CssBaseline />
+          <App />
+        </NotistackProvider>
       </ThemeProvider>
     </Fragment>
   );
