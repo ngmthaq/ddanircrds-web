@@ -1,3 +1,5 @@
 import { useTheme } from "./useTheme";
+import { useOnline } from "./useOnline";
+import { useResponsive } from "./useResponsive";
 
-export { useTheme };
+export { useTheme, useOnline, useResponsive };

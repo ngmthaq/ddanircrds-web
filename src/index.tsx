@@ -1,4 +1,4 @@
-import React, { FC, Fragment } from "react";
+import React, { FC, Fragment, StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
@@ -25,9 +25,9 @@ root.render(
   process.env.NODE_ENV === "development" ? (
     <Root />
   ) : (
-    <React.StrictMode>
+    <StrictMode>
       <Root />
-    </React.StrictMode>
+    </StrictMode>
   ),
 );
 
