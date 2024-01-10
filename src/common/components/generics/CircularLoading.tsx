@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { TransitionGroup } from "react-transition-group";
 import { Box, CircularProgress, Fade, styled } from "@mui/material";
 
-export const CicurlarLoading: FC = () => {
+export const CircularLoading: FC = () => {
   return (
     <TransitionGroup>
       <Fade>

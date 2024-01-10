@@ -1,3 +1,4 @@
-import { CicurlarLoading } from "./CicurlarLoading";
+import { CircularLoading } from "./CircularLoading";
+import { AppLoading } from "./AppLoading";
 
-export { CicurlarLoading };
+export { CircularLoading, AppLoading };
