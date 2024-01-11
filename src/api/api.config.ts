@@ -11,6 +11,7 @@ export class Api {
     const baseURL = process.env.REACT_APP_API_BASE_URL;
     const timeout = process.env.REACT_APP_API_TIMEOUT;
     this.instance = axios.create({ baseURL: baseURL, timeout: parseInt(timeout || "30000") });
+    this.default();
   }
 
   /**

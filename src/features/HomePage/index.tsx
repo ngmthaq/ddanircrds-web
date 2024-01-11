@@ -1,5 +1,5 @@
 import { HomePage } from "./HomePage";
-import { useHomePageAction } from "./HomePage.action";
 import { useHomePageLoader } from "./HomePage.loader";
+import { useHomePageAction, shouldHomePageRevalidate } from "./HomePage.action";
 
-export { HomePage, useHomePageLoader, useHomePageAction };
+export { HomePage, useHomePageLoader, useHomePageAction, shouldHomePageRevalidate };

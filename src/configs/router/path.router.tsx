@@ -1,7 +1,7 @@
 import type { RouteObject } from "react-router-dom";
 import { ErrorPage } from "@/features/ErrrorPage";
-import { HomePage, useHomePageAction, useHomePageLoader } from "@/features/HomePage";
-import { AboutPage, useAboutPageAction, useAboutPageLoader } from "@/features/AboutPage";
+import { HomePage, shouldHomePageRevalidate, useHomePageAction, useHomePageLoader } from "@/features/HomePage";
+import { AboutPage, shouldAboutPageRevalidate, useAboutPageAction, useAboutPageLoader } from "@/features/AboutPage";
 
 export type Route = RouteObject & {
   path: string;
@@ -14,6 +14,7 @@ export const HomePagePath: Route = {
   errorElement: <ErrorPage />,
   loader: useHomePageLoader,
   action: useHomePageAction,
+  shouldRevalidate: shouldHomePageRevalidate,
 };
 
 export const AboutPagePath: Route = {
@@ -23,4 +24,5 @@ export const AboutPagePath: Route = {
   errorElement: <ErrorPage />,
   loader: useAboutPageLoader,
   action: useAboutPageAction,
+  shouldRevalidate: shouldAboutPageRevalidate,
 };
