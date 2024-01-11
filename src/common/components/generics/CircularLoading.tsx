@@ -24,4 +24,5 @@ const Container = styled(Box)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   zIndex: theme.zIndex.modal,
+  background: "rgba(0, 0, 0, 0.1)",
 }));

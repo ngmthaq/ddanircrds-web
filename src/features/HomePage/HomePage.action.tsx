@@ -6,8 +6,9 @@ export const useHomePageAction: ActionFunction = async (ctx) => {
   const { openAppLoading } = useLoading();
   openAppLoading(true);
   const formData = await ctx.request.formData();
+  const isSuccess = await PostService.createPost(formData);
   openAppLoading(false);
-  return PostService.createPost(formData);
+  return isSuccess;
 };
 
 export const shouldHomePageRevalidate: ShouldRevalidateFunction = (ctx) => {
