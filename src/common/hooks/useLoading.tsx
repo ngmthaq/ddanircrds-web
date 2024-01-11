@@ -1,9 +1,9 @@
 import { EventBusUtils } from "../utils";
 
-export const useLoading = () => {
+export function useLoading() {
   const openAppLoading = (open: boolean = true) => {
     EventBusUtils.emit<boolean>("openAppLoading", open);
   };
 
   return { openAppLoading };
-};
+}

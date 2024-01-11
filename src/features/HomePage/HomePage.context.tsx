@@ -1,5 +1,12 @@
 import { createContext } from "react";
+import { Post } from "@/api/models";
 
-export type HomePageContextType = {};
+export type HomePageLoaderResponseType = {
+  posts: Post[];
+};
 
-export const HomePageContext = createContext({});
+export type HomePageContextType = {
+  loaderData?: HomePageLoaderResponseType;
+};
+
+export const HomePageContext = createContext<HomePageContextType>({});

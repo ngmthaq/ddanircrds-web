@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
-import { CircularLoading } from "./CircularLoading";
 import { EventBusUtils } from "@/common/utils";
+import { CircularLoading } from "./CircularLoading";
 
 export const AppLoading: FC = () => {
   const [isLoading, setIsLoading] = useState(false);

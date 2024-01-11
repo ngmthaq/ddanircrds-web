@@ -1,6 +1,6 @@
 import { ActionFunction, ShouldRevalidateFunction } from "react-router-dom";
 
-export const useAboutPageAction: ActionFunction = async (context) => {
+export const useAboutPageAction: ActionFunction = async (ctx) => {
   return {};
 };
 

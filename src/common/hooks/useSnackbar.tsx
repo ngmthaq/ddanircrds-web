@@ -4,7 +4,7 @@ import { EventBusUtils } from "../utils";
 
 export type SnackbarInputType = { message: string; variant: VariantType };
 
-export const useHandleSnackbar = () => {
+export function useHandleSnackbar() {
   const openSnackbar = ({ message, variant }: SnackbarInputType) => {
     enqueueSnackbar(message, { variant });
   };
@@ -13,12 +13,12 @@ export const useHandleSnackbar = () => {
     EventBusUtils.on<SnackbarInputType>("openSnackbar", openSnackbar);
     return () => EventBusUtils.off<SnackbarInputType>("openSnackbar", openSnackbar);
   });
-};
+}
 
-export const useSnackbar = () => {
+export function useSnackbar() {
   const openSnackbar = (params: SnackbarInputType) => {
     EventBusUtils.emit<SnackbarInputType>("openSnackbar", params);
   };
 
   return { openSnackbar };
-};
+}

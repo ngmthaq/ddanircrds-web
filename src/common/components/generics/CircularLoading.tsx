@@ -7,7 +7,7 @@ export const CircularLoading: FC = () => {
     <TransitionGroup>
       <Fade>
         <Container>
-          <CircularProgress size={60} />
+          <CircularProgress size={40} />
         </Container>
       </Fade>
     </TransitionGroup>
