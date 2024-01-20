@@ -11,8 +11,6 @@ import { Greeting } from "./AboutPage.styled";
 const Page: LoaderFC<{ a: string }> = () => {
   const { mode, changeTheme } = useTheme();
 
-  const AboutPageContextValue: AboutPageContextType = {};
-
   const handleChangeTheme = () => {
     if (mode === "light") {
       changeTheme("dark");
@@ -20,6 +18,8 @@ const Page: LoaderFC<{ a: string }> = () => {
       changeTheme("light");
     }
   };
+
+  const AboutPageContextValue: AboutPageContextType = {};
 
   return (
     <AboutPageContext.Provider value={AboutPageContextValue}>

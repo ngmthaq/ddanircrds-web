@@ -12,8 +12,6 @@ const Page: LoaderFC<HomePageLoaderResponseType> = ({ loaderData }) => {
   const { mode, changeTheme } = useTheme();
   const { openSnackbar } = useSnackbar();
 
-  const HomePageContextValue: HomePageContextType = { loaderData };
-
   const handleChangeTheme = () => {
     if (mode === "light") {
       changeTheme("dark");
@@ -25,6 +23,8 @@ const Page: LoaderFC<HomePageLoaderResponseType> = ({ loaderData }) => {
   const handleOpenSnackbar = () => {
     openSnackbar({ message: "You have a notification", variant: "info" });
   };
+
+  const HomePageContextValue: HomePageContextType = { loaderData };
 
   return (
     <HomePageContext.Provider value={HomePageContextValue}>
