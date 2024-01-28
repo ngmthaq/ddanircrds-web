@@ -1,9 +1,5 @@
-import { ActionFunction, ShouldRevalidateFunction } from "react-router-dom";
+import { ActionFunction } from "react-router-dom";
 
-export const useAboutPageAction: ActionFunction = async (ctx) => {
+export const useAboutPageAction: ActionFunction = async (action) => {
   return {};
-};
-
-export const shouldAboutPageRevalidate: ShouldRevalidateFunction = () => {
-  return true;
 };

@@ -1,3 +1,3 @@
-import { Post } from "./post.model";
+import Post from "./post.model";
 
 export { Post };

@@ -177,3 +177,5 @@ export class Api {
     return Promise.reject(error);
   }
 }
+
+export const api = new Api();

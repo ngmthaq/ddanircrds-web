@@ -1,5 +1,5 @@
 import type { RouteObject } from "react-router-dom";
-import { ErrorPage } from "@/features/ErrrorPage";
+import { ErrorPage } from "@/features/ErrorPage";
 import { HomePage, shouldHomePageRevalidate, useHomePageAction, useHomePageLoader } from "@/features/HomePage";
 import { AboutPage, shouldAboutPageRevalidate, useAboutPageAction, useAboutPageLoader } from "@/features/AboutPage";
 
