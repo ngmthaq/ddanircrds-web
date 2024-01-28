@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Link } from "react-router-dom";
 import { Button } from "@mui/material";
-import { AboutPagePath } from "@/configs/router/path.router";
+import { AboutPagePath } from "@/configs/router/routes";
 import { useSnackbar, useTheme } from "@/common/hooks";
 import { LoaderFC, withRouterLoader } from "@/common/components/hoc";
 import { BaseLayout } from "@/common/components/layouts";

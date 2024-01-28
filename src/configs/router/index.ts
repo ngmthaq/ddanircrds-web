@@ -1,5 +1,5 @@
 import { createBrowserRouter, defer } from "react-router-dom";
-import * as paths from "./path.router";
+import * as paths from "./routes";
 
 const routes = Object.values(paths).map((path) => {
   return {

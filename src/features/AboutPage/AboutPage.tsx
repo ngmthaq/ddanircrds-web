@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
-import { HomePagePath } from "@/configs/router/path.router";
+import { HomePagePath } from "@/configs/router/routes";
 import { useTheme } from "@/common/hooks";
 import { LoaderFC, withRouterLoader } from "@/common/components/hoc";
 import { BaseLayout } from "@/common/components/layouts";

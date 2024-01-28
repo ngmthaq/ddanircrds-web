@@ -94,6 +94,22 @@ export class Api {
   }
 
   /**
+   * Request with POST method without loading
+   *
+   * @param url
+   * @param data
+   * @param configs
+   * @returns response
+   */
+  public async postInSilence<T, D = any>(
+    url: string,
+    data: any = {},
+    configs: AxiosRequestConfig = {},
+  ): Promise<AxiosResponse<T, D>> {
+    return this.request(url, "post", {}, data, configs, false);
+  }
+
+  /**
    * Request with PUT method
    *
    * @param url
@@ -107,6 +123,22 @@ export class Api {
     configs: AxiosRequestConfig = {},
   ): Promise<AxiosResponse<T, D>> {
     return this.request(url, "put", {}, data, configs);
+  }
+
+  /**
+   * Request with PUT method without loading
+   *
+   * @param url
+   * @param data
+   * @param configs
+   * @returns response
+   */
+  public async putInSilence<T, D = any>(
+    url: string,
+    data: any = {},
+    configs: AxiosRequestConfig = {},
+  ): Promise<AxiosResponse<T, D>> {
+    return this.request(url, "put", {}, data, configs, false);
   }
 
   /**
@@ -126,6 +158,22 @@ export class Api {
   }
 
   /**
+   * Request with PATCH method without loading
+   *
+   * @param url
+   * @param data
+   * @param configs
+   * @returns response
+   */
+  public async patchInSilence<T, D = any>(
+    url: string,
+    data: any = {},
+    configs: AxiosRequestConfig = {},
+  ): Promise<AxiosResponse<T, D>> {
+    return this.request(url, "patch", {}, data, configs, false);
+  }
+
+  /**
    * Request with DELETE method
    *
    * @param url
@@ -139,6 +187,22 @@ export class Api {
     configs: AxiosRequestConfig = {},
   ): Promise<AxiosResponse<T, D>> {
     return this.request(url, "delete", {}, data, configs);
+  }
+
+  /**
+   * Request with DELETE method without loading
+   *
+   * @param url
+   * @param data
+   * @param configs
+   * @returns response
+   */
+  public async deleteInSilence<T, D = any>(
+    url: string,
+    data: any = {},
+    configs: AxiosRequestConfig = {},
+  ): Promise<AxiosResponse<T, D>> {
+    return this.request(url, "delete", {}, data, configs, false);
   }
 
   /**
