@@ -1,5 +1,6 @@
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from "axios";
 import axios from "axios";
+import { EventBusUtils } from "@/common/utils";
 
 /**
  * Api logic base on Axios
@@ -30,10 +31,18 @@ export class Api {
     params: any = {},
     data: any = {},
     configs: AxiosRequestConfig = {},
+    loading: boolean = true,
   ) {
-    const requestConfigs: AxiosRequestConfig = { ...configs, url, method, params, data };
-    const response = await this.instance.request(requestConfigs);
-    return response;
+    try {
+      if (loading) EventBusUtils.emit<boolean>("openAppLoading", true);
+      const requestConfigs: AxiosRequestConfig = { ...configs, url, method, params, data };
+      const response = await this.instance.request(requestConfigs);
+      return response;
+    } catch (error) {
+      return Promise.reject(error);
+    } finally {
+      EventBusUtils.emit<boolean>("openAppLoading", false);
+    }
   }
 
   /**
@@ -50,6 +59,22 @@ export class Api {
     configs: AxiosRequestConfig = {},
   ): Promise<AxiosResponse<T, D>> {
     return this.request(url, "get", params, {}, configs);
+  }
+
+  /**
+   * Request with GET method without loading
+   *
+   * @param url
+   * @param params
+   * @param configs
+   * @returns response
+   */
+  public async getInSilence<T, D = any>(
+    url: string,
+    params: any = {},
+    configs: AxiosRequestConfig = {},
+  ): Promise<AxiosResponse<T, D>> {
+    return this.request(url, "get", params, {}, configs, false);
   }
 
   /**
