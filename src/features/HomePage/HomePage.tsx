@@ -5,9 +5,9 @@ import { AboutPagePath } from "@/configs/router/routes";
 import { useTheme } from "@/common/hooks";
 import { LoaderFC, withRouterLoader } from "@/common/components/H.O.C";
 import { BaseLayout } from "@/common/layouts";
+import { AppUtils } from "@/common/utils";
 import { HomePageContext, HomePageContextType } from "./HomePage.context";
 import { Greeting } from "./HomePage.styled";
-import { AppUtils } from "@/common/utils";
 
 const Page: LoaderFC = () => {
   const { mode, changeTheme } = useTheme();

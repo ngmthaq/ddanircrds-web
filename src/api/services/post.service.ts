@@ -15,5 +15,10 @@ export const getAllPosts = async () => {
 };
 
 export const createPost = async (formData: FormData) => {
-  await api.default().post(ApiConst.API_ENDPOINTS.POST_CREATE_POST, formData);
+  try {
+    const response = await api.default().post(ApiConst.API_ENDPOINTS.POST_CREATE_POST, formData);
+    return responseSuccess(response);
+  } catch (error) {
+    return responseError(error);
+  }
 };
