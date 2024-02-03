@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { HomePagePath } from "@/configs/router/routes";
-import { BaseLayout } from "@/common/components/layouts";
+import { BaseLayout } from "@/common/layouts";
 import { Container, Wrapper } from "./ErrorPage.styled";
 
 type ErrorPageLayoutProps = {

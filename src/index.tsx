@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
 import { useTheme } from "./common/hooks";
-import { NotistackProvider } from "./common/components/providers";
+import { NotistackProvider } from "./common/providers";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 

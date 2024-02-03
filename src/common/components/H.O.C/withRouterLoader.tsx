@@ -1,6 +1,6 @@
 import { FC, Suspense } from "react";
 import { Await, useLoaderData } from "react-router-dom";
-import { CircularLoading } from "../generics";
+import { CircularLoading } from "../Generics";
 
 export type LoaderFC<L = any> = FC<{ loaderData: L }>;
 

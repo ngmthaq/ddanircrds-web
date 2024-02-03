@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import { HomePagePath } from "@/configs/router/routes";
 import { LoaderFC, withRouterLoader } from "@/common/components/H.O.C";
-import { BaseLayout } from "@/common/components/layouts";
+import { BaseLayout } from "@/common/layouts";
 import { AboutPageContext, AboutPageContextType } from "./AboutPage.context";
 import { Greeting } from "./AboutPage.styled";
 

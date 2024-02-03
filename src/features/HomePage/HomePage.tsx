@@ -4,7 +4,7 @@ import { Button } from "@mui/material";
 import { AboutPagePath } from "@/configs/router/routes";
 import { useSnackbar, useTheme } from "@/common/hooks";
 import { LoaderFC, withRouterLoader } from "@/common/components/H.O.C";
-import { BaseLayout } from "@/common/components/layouts";
+import { BaseLayout } from "@/common/layouts";
 import { HomePageContext, HomePageContextType } from "./HomePage.context";
 import { Greeting } from "./HomePage.styled";
 
