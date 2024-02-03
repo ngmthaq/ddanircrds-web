@@ -9,5 +9,6 @@ import EventBusUtils from "./bus.utils";
 import * as CommonUtils from "./common.utils";
 import * as StorageUtils from "./storage.utils";
 import * as AuthUtils from "./auth.utils";
+import * as AppUtils from "./app.utils";
 
-export { LodashUtils, HumpsUtils, EventBusUtils, CommonUtils, StorageUtils, AuthUtils };
+export { LodashUtils, HumpsUtils, EventBusUtils, CommonUtils, StorageUtils, AuthUtils, AppUtils };

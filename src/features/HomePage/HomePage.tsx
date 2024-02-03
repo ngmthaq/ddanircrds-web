@@ -2,15 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import { AboutPagePath } from "@/configs/router/routes";
-import { useSnackbar, useTheme } from "@/common/hooks";
+import { useTheme } from "@/common/hooks";
 import { LoaderFC, withRouterLoader } from "@/common/components/H.O.C";
 import { BaseLayout } from "@/common/layouts";
 import { HomePageContext, HomePageContextType } from "./HomePage.context";
 import { Greeting } from "./HomePage.styled";
+import { AppUtils } from "@/common/utils";
 
 const Page: LoaderFC = () => {
   const { mode, changeTheme } = useTheme();
-  const { openSnackbar } = useSnackbar();
 
   const handleChangeTheme = () => {
     if (mode === "light") {
@@ -21,7 +21,7 @@ const Page: LoaderFC = () => {
   };
 
   const handleOpenSnackbar = () => {
-    openSnackbar({ message: "You have a notification", variant: "info" });
+    AppUtils.openSnackbar({ message: "You have a notification", variant: "info" });
   };
 
   const HomePageContextValue: HomePageContextType = {};
