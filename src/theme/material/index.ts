@@ -2,22 +2,8 @@ import { Palette, createTheme } from "@mui/material/styles";
 import { EventBusUtils, StorageUtils } from "@/common/utils";
 import { breakpointValues } from "./configs/breakpoints";
 import { zIndex } from "./configs/z-index";
-import {
-  lightPaletteError,
-  lightPaletteInfo,
-  lightPalettePrimary,
-  lightPaletteSecondary,
-  lightPaletteSuccess,
-  lightPaletteWaring,
-} from "./configs/palette-light";
-import {
-  darkPaletteError,
-  darkPaletteInfo,
-  darkPalettePrimary,
-  darkPaletteSecondary,
-  darkPaletteSuccess,
-  darkPaletteWaring,
-} from "./configs/palette-dark";
+import * as paletteLight from "./configs/palette-light";
+import * as paletteDark from "./configs/palette-dark";
 
 export const getDefaultTheme = (mode: Palette["mode"]) => {
   return createTheme({ palette: { mode } });
@@ -26,19 +12,17 @@ export const getDefaultTheme = (mode: Palette["mode"]) => {
 export const getTheme = (mode: Palette["mode"]) => {
   const defaultTheme = getDefaultTheme(mode);
   return createTheme(defaultTheme, {
-    breakpoints: {
-      values: breakpointValues,
-    },
+    zIndex: zIndex,
+    breakpoints: { values: breakpointValues },
     palette: {
       mode: mode,
-      primary: mode === "light" ? lightPalettePrimary : darkPalettePrimary,
-      secondary: mode === "light" ? lightPaletteSecondary : darkPaletteSecondary,
-      error: mode === "light" ? lightPaletteError : darkPaletteError,
-      warning: mode === "light" ? lightPaletteWaring : darkPaletteWaring,
-      info: mode === "light" ? lightPaletteInfo : darkPaletteInfo,
-      success: mode === "light" ? lightPaletteSuccess : darkPaletteSuccess,
+      primary: mode === "light" ? paletteLight.palettePrimary : paletteDark.palettePrimary,
+      secondary: mode === "light" ? paletteLight.paletteSecondary : paletteDark.paletteSecondary,
+      error: mode === "light" ? paletteLight.paletteError : paletteDark.paletteError,
+      warning: mode === "light" ? paletteLight.paletteWaring : paletteDark.paletteWaring,
+      info: mode === "light" ? paletteLight.paletteInfo : paletteDark.paletteInfo,
+      success: mode === "light" ? paletteLight.paletteSuccess : paletteDark.paletteSuccess,
     },
-    zIndex: zIndex,
   });
 };
 

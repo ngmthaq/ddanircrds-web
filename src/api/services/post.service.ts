@@ -1,6 +1,6 @@
 import { ApiConst } from "@/configs/const";
 import { HumpsUtils } from "@/common/utils";
-import { api, responseError, responseSuccess } from "../api.config";
+import { api, responseError, responseSuccess } from "../configs";
 import { Post } from "../models";
 
 export const getAllPosts = async () => {
