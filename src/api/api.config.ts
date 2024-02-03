@@ -1,6 +1,7 @@
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from "axios";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { EventBusUtils } from "@/common/utils";
+import { ApiConst } from "@/configs/const";
 
 /**
  * Api logic base on Axios
@@ -268,3 +269,36 @@ export class Api {
 }
 
 export const api = new Api();
+
+export function responseSuccess<T>(response: AxiosResponse, data?: T) {
+  return { status: response.status, data: data || response.data, ok: true, message: null };
+}
+
+export function responseError(error: any) {
+  console.error(error);
+
+  if (error instanceof AxiosError && error.response) {
+    return {
+      status: error.response.status,
+      data: error.response.data,
+      ok: false,
+      message: error.response.statusText,
+    };
+  }
+
+  if (error instanceof AxiosError && error.request) {
+    return {
+      status: ApiConst.HTTPS_STT_CODE.internalServerError,
+      data: null,
+      ok: false,
+      message: "The request was made but no response was received",
+    };
+  }
+
+  return {
+    status: ApiConst.HTTPS_STT_CODE.internalServerError,
+    data: null,
+    ok: false,
+    message: error.message,
+  };
+}
