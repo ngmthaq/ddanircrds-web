@@ -8,7 +8,7 @@
     "test": "craco test",
     "lint": "eslint --ext .tsx,.ts ./src",
     "format": "prettier -w .",
-    "dev": "yarn format && yarn start",
+    "dev": "yarn format && cross-env BROWSER=none yarn start",
     "build": "yarn lint && cross-env GENERATE_SOURCEMAP=false yarn build:only",
     "preview": "serve -s build"
   },
