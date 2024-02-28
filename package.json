@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "postinstall": "cd ./functions && yarn install",
     "start": "craco start --verbose",
     "build:only": "craco build",
     "test": "craco test",
