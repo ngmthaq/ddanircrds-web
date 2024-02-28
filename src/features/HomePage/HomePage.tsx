@@ -27,7 +27,7 @@ const Page: LoaderFC = () => {
   return (
     <HomePageContext.Provider value={HomePageContextValue}>
       <BaseLayout>
-        <Greeting variant="h1">Hello World</Greeting>
+        <Greeting variant="h1">Hello World Firebase</Greeting>
         <Button onClick={handleChangeTheme}>Change Theme</Button>
         <Button onClick={handleOpenSnackbar}>Open Snackbar</Button>
       </BaseLayout>
