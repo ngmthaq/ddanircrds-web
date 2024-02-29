@@ -11,7 +11,8 @@
     "format": "prettier -w .",
     "dev": "yarn format && cross-env BROWSER=none yarn start",
     "build": "yarn lint && cross-env GENERATE_SOURCEMAP=false yarn build:only",
-    "preview": "serve -s build"
+    "preview": "serve -s build",
+    "deploy:firebase": "yarn build && firebase deploy"
   },
   "dependencies": {
     "@emotion/react": "^11.11.3",
