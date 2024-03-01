@@ -1,3 +1,4 @@
-import Post from "./post.model";
+import CredentialModel from "@/api/models/credential.model";
+import UserModel from "@/api/models/user.model";
 
-export { Post };
+export { CredentialModel, UserModel };

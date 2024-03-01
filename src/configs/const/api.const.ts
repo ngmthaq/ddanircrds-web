@@ -8,9 +8,24 @@ export const HTTPS_STT_CODE = {
   unprocessableContent: 422,
   internalServerError: 500,
   serviceUnavailable: 503,
+  firebaseError: -1,
 };
 
-export const API_ENDPOINTS = {
-  GET_ALL_POSTS: "/posts",
-  POST_CREATE_POST: "/posts",
+export const FIREBASE_AUTH_ERRORS = {
+  auth_app_deleted: "auth/app-deleted",
+  auth_app_not_authorized: "auth/app-not-authorized",
+  auth_argument_error: "auth/argument-error",
+  auth_invalid_api_key: "auth/invalid-api-key",
+  auth_invalid_user_token: "auth/invalid-user-token",
+  auth_invalid_tenant_id: "auth/invalid-tenant-id",
+  auth_network_request_failed: "auth/network-request-failed",
+  auth_operation_not_allowed: "auth/operation-not-allowed",
+  auth_requires_recent_login: "auth/requires-recent-login",
+  auth_too_many_requests: "auth/too-many-requests",
+  auth_unauthorized_domain: "auth/unauthorized-domain",
+  auth_user_disabled: "auth/user-disabled",
+  auth_user_token_expired: "auth/user-token-expired",
+  auth_web_storage_unsupported: "auth/web-storage-unsupported",
+  auth_multi_factor_auth_required: "auth/multi-factor-auth-required",
+  auth_invalid_credential: "auth/invalid-credential",
 };

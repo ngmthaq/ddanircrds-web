@@ -3,6 +3,8 @@ import { getAnalytics } from "firebase/analytics";
 import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 import { getFunctions } from "firebase/functions";
+import { getAuth } from "firebase/auth";
+import { UserModel } from "@/api/models";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -14,8 +16,36 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
-export const firebaseApp = initializeApp(firebaseConfig);
-export const firebaseAnalytics = getAnalytics(firebaseApp);
-export const firebaseStorage = getStorage(firebaseApp);
-export const firebaseFirestore = getFirestore(firebaseApp);
-export const firebaseFunctions = getFunctions(firebaseApp);
+const firebaseApp = initializeApp(firebaseConfig);
+
+const firebaseAnalytics = getAnalytics(firebaseApp);
+
+const firebaseStorage = getStorage(firebaseApp);
+
+const firebaseFirestore = getFirestore(firebaseApp);
+
+const firebaseFunctions = getFunctions(firebaseApp);
+
+const firebaseAuth = getAuth(firebaseApp);
+
+const firebaseIsAuthenticated = (): boolean => {
+  return Boolean(firebaseAuth.currentUser);
+};
+
+const firebaseAuthenticatedUser = () => {
+  return firebaseAuth.currentUser
+    ? new UserModel(firebaseAuth.currentUser?.email, firebaseAuth.currentUser.uid)
+    : null;
+};
+
+export {
+  firebaseConfig,
+  firebaseApp,
+  firebaseAuth,
+  firebaseAnalytics,
+  firebaseStorage,
+  firebaseFirestore,
+  firebaseFunctions,
+  firebaseIsAuthenticated,
+  firebaseAuthenticatedUser,
+};

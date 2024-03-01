@@ -1,3 +1,3 @@
-import * as PostService from "./post.service";
+import * as AuthServices from "./auth.service";
 
-export { PostService };
+export { AuthServices };

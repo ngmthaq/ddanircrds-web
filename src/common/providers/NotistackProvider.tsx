@@ -1,10 +1,19 @@
 import React, { FC, ReactNode, useEffect } from "react";
-import { SnackbarKey, SnackbarProvider, useSnackbar, VariantType, enqueueSnackbar } from "notistack";
+import {
+  SnackbarKey,
+  SnackbarProvider,
+  useSnackbar,
+  VariantType,
+  enqueueSnackbar,
+} from "notistack";
 import { Close } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import { EventBusUtils } from "../utils";
 
-export type SnackbarInputType = { message: string; variant: VariantType };
+export type SnackbarInputType = {
+  message: string;
+  variant: VariantType;
+};
 
 export function useHandleSnackbar() {
   const openSnackbar = ({ message, variant }: SnackbarInputType) => {
@@ -17,12 +26,17 @@ export function useHandleSnackbar() {
   });
 }
 
-export const NotistackProvider: FC<{ children: ReactNode }> = ({ children }) => {
+export const NotistackProvider: FC<{
+  children: ReactNode;
+}> = ({ children }) => {
   return (
     <SnackbarProvider
       maxSnack={3}
       autoHideDuration={5000}
-      anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+      anchorOrigin={{
+        vertical: "bottom",
+        horizontal: "right",
+      }}
       action={(snackbarKey) => <SnackbarCloseButton snackbarKey={snackbarKey} />}
     >
       {children}
@@ -30,7 +44,9 @@ export const NotistackProvider: FC<{ children: ReactNode }> = ({ children }) => 
   );
 };
 
-const SnackbarCloseButton: FC<{ snackbarKey: SnackbarKey }> = ({ snackbarKey }) => {
+const SnackbarCloseButton: FC<{
+  snackbarKey: SnackbarKey;
+}> = ({ snackbarKey }) => {
   const { closeSnackbar } = useSnackbar();
 
   return (

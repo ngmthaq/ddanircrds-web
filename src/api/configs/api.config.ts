@@ -1,5 +1,11 @@
-import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from "axios";
+import type {
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+  InternalAxiosRequestConfig,
+} from "axios";
 import axios, { AxiosError } from "axios";
+import { FirebaseError } from "firebase/app";
 import { EventBusUtils } from "@/common/utils";
 import { ApiConst } from "@/configs/const";
 
@@ -12,7 +18,10 @@ export class Api {
   public constructor() {
     const baseURL = process.env.REACT_APP_API_BASE_URL;
     const timeout = process.env.REACT_APP_API_TIMEOUT;
-    this.instance = axios.create({ baseURL: baseURL, timeout: parseInt(timeout || "30000") });
+    this.instance = axios.create({
+      baseURL: baseURL,
+      timeout: parseInt(timeout || "30000"),
+    });
     this.default();
   }
 
@@ -24,6 +33,7 @@ export class Api {
    * @param params
    * @param data
    * @param configs
+   * @param loading
    * @returns response
    */
   protected async request(
@@ -36,9 +46,14 @@ export class Api {
   ) {
     try {
       if (loading) EventBusUtils.emit<boolean>("openAppLoading", true);
-      const requestConfigs: AxiosRequestConfig = { ...configs, url, method, params, data };
-      const response = await this.instance.request(requestConfigs);
-      return response;
+      const requestConfigs: AxiosRequestConfig = {
+        ...configs,
+        url,
+        method,
+        params,
+        data,
+      };
+      return await this.instance.request(requestConfigs);
     } catch (error) {
       return Promise.reject(error);
     } finally {
@@ -270,8 +285,13 @@ export class Api {
 
 export const api = new Api();
 
-export function responseSuccess<T>(response: AxiosResponse, data?: T) {
-  return { status: response.status, data: data || response.data, ok: true, message: null };
+export function responseSuccess<T>(response?: AxiosResponse, data?: T, status?: number) {
+  return {
+    status: status || response?.status || 200,
+    data: data || response?.data || null,
+    ok: true,
+    message: null,
+  };
 }
 
 export function responseError(error: any) {
@@ -292,6 +312,15 @@ export function responseError(error: any) {
       data: null,
       ok: false,
       message: "The request was made but no response was received",
+    };
+  }
+
+  if (error instanceof FirebaseError) {
+    return {
+      status: ApiConst.HTTPS_STT_CODE.firebaseError,
+      data: error.code,
+      ok: false,
+      message: `${error.name} - ${error.message}`,
     };
   }
 

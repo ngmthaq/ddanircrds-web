@@ -10,7 +10,9 @@ export function withRouterLoader<L>(Element: LoaderFC<L>) {
 
     return (
       <Suspense fallback={<CircularLoading />}>
-        <Await resolve={loaderData.data}>{(resolveLoaderData) => <Element loaderData={resolveLoaderData} />}</Await>
+        <Await resolve={loaderData.data}>
+          {(resolveLoaderData) => <Element loaderData={resolveLoaderData} />}
+        </Await>
       </Suspense>
     );
   };

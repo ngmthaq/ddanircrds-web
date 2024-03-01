@@ -12,7 +12,8 @@
     "dev": "yarn format && cross-env BROWSER=none yarn start",
     "build": "yarn lint && cross-env GENERATE_SOURCEMAP=false yarn build:only",
     "preview": "serve -s build",
-    "deploy:firebase": "yarn build && firebase deploy"
+    "deploy:firebase": "yarn build && firebase deploy",
+    "firebase:emulators": "firebase emulators:start"
   },
   "dependencies": {
     "@emotion/react": "^11.11.3",
