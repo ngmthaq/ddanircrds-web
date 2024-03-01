@@ -13,10 +13,10 @@ import "./theme/scss/index.scss";
 function App() {
   useHandleSnackbar();
 
-  const appContextValue: AppContextType = {};
+  const AppContextValue: AppContextType = {};
 
   return (
-    <AppContext.Provider value={appContextValue}>
+    <AppContext.Provider value={AppContextValue}>
       <AppLoading />
       <RouterProvider router={router} />
     </AppContext.Provider>
