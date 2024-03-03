@@ -3,7 +3,7 @@ import { getAnalytics } from "firebase/analytics";
 import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 import { getFunctions } from "firebase/functions";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { UserModel } from "@/api/models";
 
 const firebaseConfig = {
@@ -28,14 +28,17 @@ const firebaseFunctions = getFunctions(firebaseApp);
 
 const firebaseAuth = getAuth(firebaseApp);
 
-const firebaseIsAuthenticated = (): boolean => {
-  return Boolean(firebaseAuth.currentUser);
-};
-
-const firebaseAuthenticatedUser = () => {
-  return firebaseAuth.currentUser
-    ? new UserModel(firebaseAuth.currentUser?.email, firebaseAuth.currentUser.uid)
-    : null;
+const firebaseGetAuthenticatedUser = (): Promise<UserModel | null> => {
+  return new Promise((resolve, reject) => {
+    onAuthStateChanged(
+      firebaseAuth,
+      (user) => {
+        if (user) resolve(new UserModel(user.email, user.uid));
+        else resolve(null);
+      },
+      (error) => reject(error),
+    );
+  });
 };
 
 export {
@@ -46,6 +49,5 @@ export {
   firebaseStorage,
   firebaseFirestore,
   firebaseFunctions,
-  firebaseIsAuthenticated,
-  firebaseAuthenticatedUser,
+  firebaseGetAuthenticatedUser,
 };

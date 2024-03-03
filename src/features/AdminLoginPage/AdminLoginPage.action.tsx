@@ -14,5 +14,5 @@ export const useAdminLoginPageAction: ActionFunction = async (action) => {
   await AppUtils.delay(1);
   AppUtils.openLoading(false);
   if (response.ok) return redirect(AdminSocialPagePath.path);
-  return AuthServices.handleErrorMessage(response.data as string);
+  return { message: AuthServices.handleErrorMessage(response.data as string) };
 };

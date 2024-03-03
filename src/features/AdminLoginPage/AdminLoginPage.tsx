@@ -21,12 +21,13 @@ const Page: LoaderFC = () => {
     password: string;
   };
 
-  const actionErrors = useActionData() as string;
+  const actionErrors = useActionData() as { message: string };
 
   const [form, setForm] = useState<LoginFormType>({
     email: "",
     password: "",
   });
+
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   const handleChangeFormInput: InputProps["onChange"] = (event) => {
@@ -46,8 +47,8 @@ const Page: LoaderFC = () => {
 
   useEffect(() => {
     if (actionErrors) {
-      console.error(actionErrors);
-      setErrorMessage(actionErrors);
+      console.error(actionErrors.message);
+      setErrorMessage(actionErrors.message);
     }
   }, [actionErrors]);
 
