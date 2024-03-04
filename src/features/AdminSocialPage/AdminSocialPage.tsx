@@ -40,7 +40,7 @@ const Page: LoaderFC = () => {
 
   return (
     <AdminSocialPageContext.Provider value={AdminSocialPageContextValue}>
-      <AdminLayout title="Social Network">
+      <AdminLayout title="Social Network" contentMaxWidth="100%">
         <TableContainer>
           <Table size="small">
             <TableHead>

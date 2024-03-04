@@ -9,11 +9,11 @@ import { firebaseAuth } from "@/configs/firebase";
 import { CredentialModel, UserModel } from "@/api/models";
 import { responseError, responseSuccess } from "@/api/configs";
 
-export const login = async (credential: CredentialModel) => {
+export async function login(credential: CredentialModel) {
   try {
-    await setPersistence(firebaseAuth, browserSessionPersistence);
+    await setPersistence(firebaseAuth(), browserSessionPersistence);
     const userCredential = await signInWithEmailAndPassword(
-      firebaseAuth,
+      firebaseAuth(),
       credential.email,
       credential.password,
     );
@@ -24,18 +24,18 @@ export const login = async (credential: CredentialModel) => {
   } catch (error) {
     return responseError(error);
   }
-};
+}
 
-export const logout = async () => {
+export async function logout() {
   try {
-    await signOut(firebaseAuth);
+    await signOut(firebaseAuth());
     return responseSuccess(undefined, true);
   } catch (error) {
     return responseError(error);
   }
-};
+}
 
-export const handleErrorMessage = (code: string) => {
+export function handleErrorMessage(code: string) {
   let defaultMessage = code;
   switch (code) {
     case ApiConst.FIREBASE_AUTH_ERRORS.auth_argument_error:
@@ -144,4 +144,4 @@ export const handleErrorMessage = (code: string) => {
     }
   }
   return defaultMessage;
-};
+}

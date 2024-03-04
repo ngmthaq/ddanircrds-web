@@ -16,22 +16,22 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
-const firebaseApp = initializeApp(firebaseConfig);
+const firebaseApp = () => initializeApp(firebaseConfig);
 
-const firebaseAnalytics = getAnalytics(firebaseApp);
+const firebaseAnalytics = () => getAnalytics(firebaseApp());
 
-const firebaseStorage = getStorage(firebaseApp);
+const firebaseStorage = () => getStorage(firebaseApp());
 
-const firebaseFirestore = getFirestore(firebaseApp);
+const firebaseFirestore = () => getFirestore(firebaseApp());
 
-const firebaseFunctions = getFunctions(firebaseApp);
+const firebaseFunctions = () => getFunctions(firebaseApp());
 
-const firebaseAuth = getAuth(firebaseApp);
+const firebaseAuth = () => getAuth(firebaseApp());
 
 const firebaseGetAuthenticatedUser = (): Promise<UserModel | null> => {
   return new Promise((resolve, reject) => {
     onAuthStateChanged(
-      firebaseAuth,
+      firebaseAuth(),
       (user) => {
         if (user) resolve(new UserModel(user.email, user.uid));
         else resolve(null);
