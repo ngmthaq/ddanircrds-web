@@ -285,10 +285,10 @@ export class Api {
 
 export const api = new Api();
 
-export function responseSuccess<T>(response?: AxiosResponse, data?: T, status?: number) {
+export function responseSuccess<T>(data: T) {
   return {
-    status: status || response?.status || 200,
-    data: data || response?.data || null,
+    status: 200,
+    data: data,
     ok: true,
     message: null,
   };

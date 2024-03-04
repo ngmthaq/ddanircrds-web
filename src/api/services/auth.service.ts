@@ -20,7 +20,7 @@ export async function login(credential: CredentialModel) {
     const user = userCredential.user;
     if (!user.email) return responseError(new Error("Email is not defined"));
     const userModel = new UserModel(user.email, user.uid);
-    return responseSuccess<UserModel>(undefined, userModel);
+    return responseSuccess<UserModel>(userModel);
   } catch (error) {
     return responseError(error);
   }
@@ -29,7 +29,7 @@ export async function login(credential: CredentialModel) {
 export async function logout() {
   try {
     await signOut(firebaseAuth());
-    return responseSuccess(undefined, true);
+    return responseSuccess(true);
   } catch (error) {
     return responseError(error);
   }

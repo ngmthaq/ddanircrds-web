@@ -2,17 +2,18 @@ import { LoaderFunction } from "react-router-dom";
 import { firebaseGetAuthenticatedUser } from "@/configs/firebase";
 import { AdminLoginPagePath } from "@/configs/router/routes";
 import { SocialServices } from "@/api/services";
+import { ApiConst } from "@/configs/const";
 
 export const useAdminSocialPageLoader: LoaderFunction = async (loader) => {
   try {
     const user = await firebaseGetAuthenticatedUser();
     if (!user) return window.location.replace(AdminLoginPagePath.path);
     console.info("Welcome Back,", user.email);
-    const socials = await SocialServices.getAllSocials();
-    console.info(socials);
-    return null;
+    const response = await SocialServices.getAllSocials();
+    if (response.ok) return response.data;
+    else throw new Response(response.message, { status: response.status });
   } catch (error) {
     console.error(error);
-    return null;
+    throw new Response(null, { status: ApiConst.HTTPS_STT_CODE.internalServerError });
   }
 };

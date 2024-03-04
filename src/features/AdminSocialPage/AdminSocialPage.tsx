@@ -14,27 +14,11 @@ import {
 import { withRouterLoader, type LoaderFC } from "@/common/components/H.O.C";
 import { AdminLayout } from "@/common/layouts";
 import { SocialModel } from "@/api/models";
-import iconFacebook from "@/theme/assets/icon-facebook.png";
-import iconInstagram from "@/theme/assets/icon-instagram.png";
-import iconYoutube from "@/theme/assets/icon-youtube.png";
-import iconSpotify from "@/theme/assets/icon-spotify.png";
-import iconSoundCloud from "@/theme/assets/icon-soundcloud.png";
-import iconTiktok from "@/theme/assets/icon-tiktok.png";
 import { AdminSocialPageContext, AdminSocialPageContextType } from "./AdminSocialPage.context";
 import { ButtonContainer } from "./AdminSocialPage.styled";
 
-const Page: LoaderFC = () => {
-  const socialNetworks = useMemo<SocialModel[]>(
-    () => [
-      new SocialModel("1", "Facebook", "", iconFacebook, true),
-      new SocialModel("2", "Instagram", "", iconInstagram, true),
-      new SocialModel("3", "Youtube", "", iconYoutube, true),
-      new SocialModel("4", "Spotify", "", iconSpotify, true),
-      new SocialModel("5", "SoundCloud", "", iconSoundCloud, true),
-      new SocialModel("6", "Tiktok", "", iconTiktok, true),
-    ],
-    [],
-  );
+const Page: LoaderFC = ({ loaderData }) => {
+  const socialNetworks = useMemo<SocialModel[]>(() => loaderData, [loaderData]);
 
   const AdminSocialPageContextValue: AdminSocialPageContextType = {};
 
@@ -45,21 +29,28 @@ const Page: LoaderFC = () => {
           <Table size="small">
             <TableHead>
               <TableRow>
-                <TableCell sx={{ width: "10%" }}>ID</TableCell>
                 <TableCell sx={{ width: "10%" }}>Icon</TableCell>
-                <TableCell sx={{ width: "15%" }}>Name</TableCell>
-                <TableCell sx={{ width: "55%" }}>Social Profile</TableCell>
+                <TableCell sx={{ width: "10%" }}>Name</TableCell>
+                <TableCell sx={{ width: "10%" }}>Logo</TableCell>
+                <TableCell sx={{ width: "40%" }}>Social Profile</TableCell>
+                <TableCell sx={{ width: "20%" }}>Record ID</TableCell>
                 <TableCell sx={{ width: "10%" }}>Active</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {socialNetworks.map((socialNetwork) => (
                 <TableRow key={socialNetwork.id}>
-                  <TableCell>{socialNetwork.id}</TableCell>
                   <TableCell>
                     <Avatar sx={{ width: 24, height: 24 }} src={socialNetwork.icon} />
                   </TableCell>
                   <TableCell>{socialNetwork.name}</TableCell>
+                  <TableCell>
+                    <img
+                      src={socialNetwork.logo}
+                      alt={socialNetwork.name}
+                      style={{ height: "100%", width: "80%", objectFit: "contain" }}
+                    />
+                  </TableCell>
                   <TableCell>
                     <OutlinedInput
                       fullWidth
@@ -68,6 +59,7 @@ const Page: LoaderFC = () => {
                       value={socialNetwork.profile}
                     />
                   </TableCell>
+                  <TableCell>{socialNetwork.id}</TableCell>
                   <TableCell>
                     <Switch size="small" defaultChecked={socialNetwork.status} />
                   </TableCell>
