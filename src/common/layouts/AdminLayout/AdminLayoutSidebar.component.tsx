@@ -16,7 +16,7 @@ export const AdminLayoutSidebar = () => {
 
   const location = useLocation();
 
-  const sidebarItems: AdminSidebarItemType[] = useMemo(
+  const sidebarItems = useMemo<AdminSidebarItemType[]>(
     () => [
       {
         path: AdminSocialPagePath.path,

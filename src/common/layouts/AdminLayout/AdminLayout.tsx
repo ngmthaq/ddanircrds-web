@@ -1,8 +1,7 @@
 import React, { FC, ReactNode } from "react";
 import { AdminLayoutContext, type AdminLayoutContextType } from "./AdminLayout.context";
-import { Box, Typography } from "@mui/material";
 import { AdminLayoutSidebar } from "./AdminLayoutSidebar.component";
-import { Container, Wrapper } from "./AdminLayout.styled";
+import { Container, ContentWrapper, Wrapper, WrapperTitle } from "./AdminLayout.styled";
 
 export type AdminLayoutProps = {
   children: ReactNode;
@@ -17,8 +16,8 @@ export const AdminLayout: FC<AdminLayoutProps> = ({ children, title }) => {
       <Container id="admin-layout">
         <AdminLayoutSidebar />
         <Wrapper component="section">
-          <Typography>{title}</Typography>
-          <Box>{children}</Box>
+          <WrapperTitle variant="h5">{title}</WrapperTitle>
+          <ContentWrapper>{children}</ContentWrapper>
         </Wrapper>
       </Container>
     </AdminLayoutContext.Provider>

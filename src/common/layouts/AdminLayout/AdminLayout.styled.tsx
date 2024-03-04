@@ -1,5 +1,5 @@
 import { CommonUtils } from "@/common/utils";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 export const AdminSidebarWidth = 300;
@@ -10,8 +10,7 @@ export const Container = styled(Box)(({ theme }) => ({
   width: "100vw",
   height: "100vh",
   display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
+  overflow: "hidden",
 }));
 
 export const Sidebar = styled(Box)(({ theme }) => ({
@@ -20,6 +19,7 @@ export const Sidebar = styled(Box)(({ theme }) => ({
   background: "rgb(249, 250, 251)",
   padding: "24px",
   borderRight: "1px dashed rgba(145, 158, 171, 0.2)",
+  flexShrink: 0,
 }));
 
 export const SidebarLogoWrapper = styled(Box)(({ theme }) => ({
@@ -87,5 +87,22 @@ export const SidebarItem = styled(Box)(({ theme }) => ({
 export const Wrapper = styled(Box)(({ theme }) => ({
   height: "100%",
   width: `calc(100% - ${AdminSidebarWidth}px)`,
+  overflowY: "scroll",
+  padding: "0 32px",
+  background: "rgb(249, 250, 251)",
+}));
+
+export const WrapperTitle = styled(Typography)(({ theme }) => ({
+  fontWeight: "bold",
+  padding: "32px 0 8px",
+  marginBottom: "24px",
+  borderBottom: "1px dashed rgba(145, 158, 171, 0.4)",
+}));
+
+export const ContentWrapper = styled(Box)(({ theme }) => ({
   background: "#fff",
+  boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
+  borderRadius: "4px",
+  padding: "24px",
+  marginBottom: "32px",
 }));
