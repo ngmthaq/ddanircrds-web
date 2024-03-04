@@ -5,15 +5,8 @@ import { type InputProps } from "@mui/material/Input/Input";
 import { withRouterLoader, type LoaderFC } from "@/common/components/H.O.C";
 import { BaseLayout } from "@/common/layouts";
 import { ConfirmDialog, PasswordTextField } from "@/common/components/Generics";
-import {
-  BackgroundContainer,
-  LoginButton,
-  LoginForm,
-} from "@/features/AdminLoginPage/AdminLoginPage.styled";
-import {
-  AdminLoginPageContext,
-  type AdminLoginPageContextType,
-} from "@/features/AdminLoginPage/AdminLoginPage.context";
+import { AdminLoginPageContext, type AdminLoginPageContextType } from "./AdminLoginPage.context";
+import { BackgroundContainer, LoginButton, LoginForm } from "./AdminLoginPage.styled";
 
 const Page: LoaderFC = () => {
   type LoginFormType = {
@@ -91,8 +84,8 @@ const Page: LoaderFC = () => {
               </LoginButton>
               <Divider />
               <Typography variant="caption" display="block" textAlign="center" marginTop="16px">
-                Don't have an account? <br /> Contact the administrator to be granted a system login
-                account.
+                Don't have an account? <br />
+                Contact the administrator to be granted a system login account.
               </Typography>
             </Form>
           </LoginForm>
