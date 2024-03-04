@@ -1,4 +1,4 @@
-import CredentialModel from "@/api/models/credential.model";
-import UserModel from "@/api/models/user.model";
+import CredentialModel from "./credential.model";
+import UserModel from "./user.model";
 
 export { CredentialModel, UserModel };

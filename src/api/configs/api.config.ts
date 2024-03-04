@@ -1,10 +1,10 @@
-import type {
-  AxiosInstance,
-  AxiosRequestConfig,
-  AxiosResponse,
-  InternalAxiosRequestConfig,
+import axios, {
+  AxiosError,
+  type AxiosInstance,
+  type AxiosRequestConfig,
+  type AxiosResponse,
+  type InternalAxiosRequestConfig,
 } from "axios";
-import axios, { AxiosError } from "axios";
 import { FirebaseError } from "firebase/app";
 import { EventBusUtils } from "@/common/utils";
 import { ApiConst } from "@/configs/const";

@@ -1,6 +1,6 @@
-import { CircularLoading } from "@/common/components/Generics/CircularLoading";
-import { AppLoading } from "@/common/components/Generics/AppLoading";
-import { PasswordTextField } from "@/common/components/Generics/PasswordTextField";
-import { ConfirmDialog } from "@/common/components/Generics/ConfirmDialog";
+import { CircularLoading } from "./CircularLoading";
+import { AppLoading } from "./AppLoading";
+import { PasswordTextField } from "./PasswordTextField";
+import { ConfirmDialog } from "./ConfirmDialog";
 
 export { CircularLoading, AppLoading, PasswordTextField, ConfirmDialog };

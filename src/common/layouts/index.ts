@@ -1,3 +1,4 @@
 import { BaseLayout } from "./BaseLayout";
+import { AdminLayout } from "./AdminLayout";
 
-export { BaseLayout };
+export { BaseLayout, AdminLayout };

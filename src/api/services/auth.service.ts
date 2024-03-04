@@ -4,10 +4,10 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
+import { ApiConst } from "@/configs/const";
+import { firebaseAuth } from "@/configs/firebase";
 import { CredentialModel, UserModel } from "@/api/models";
 import { responseError, responseSuccess } from "@/api/configs";
-import { firebaseAuth } from "@/configs/firebase";
-import { ApiConst } from "@/configs/const";
 
 export const login = async (credential: CredentialModel) => {
   try {
