@@ -33,9 +33,9 @@ export const AdminLayoutSidebar = () => {
   return (
     <Sidebar component="aside">
       <SidebarLogoWrapper>
-        <Link to={AdminSocialPagePath.path}>
+        <a href="/" target="_blank">
           <img src={logo} alt="logo" />
-        </Link>
+        </a>
       </SidebarLogoWrapper>
       <SidebarItemWrapper>
         {sidebarItems.map((sidebarItem, index) => (

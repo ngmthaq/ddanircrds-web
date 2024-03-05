@@ -1,5 +1,5 @@
 import { CommonUtils } from "@/common/utils";
-import { Box, Typography } from "@mui/material";
+import { Box, Paper, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 export const AdminSidebarWidth = 300;
@@ -99,10 +99,7 @@ export const WrapperTitle = styled(Typography)(({ theme }) => ({
   borderBottom: "1px dashed rgba(145, 158, 171, 0.4)",
 }));
 
-export const ContentWrapper = styled(Box)(({ theme }) => ({
-  background: "#fff",
-  boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px",
-  borderRadius: "4px",
+export const ContentWrapper = styled(Paper)(({ theme }) => ({
   padding: "24px",
   marginBottom: "32px",
 }));

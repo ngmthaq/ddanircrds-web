@@ -46,13 +46,28 @@ export async function updateSocialList(socials: SocialModel[]) {
       const outputs = socials.map(async (social) => {
         const documentRef = doc(firebaseFirestore(), "socials", social.id);
         const document = await transaction.get(documentRef);
-        if (!document.exists()) throw new Error("Document does not exist!");
+        if (!document.exists()) throw new Error(`Document ${social.id} does not exist!`);
         transaction.update(documentRef, { profile: social.profile, isOpen: social.isOpen });
         return social;
       });
       return Promise.all(outputs);
     });
     return responseSuccess<SocialModel[]>(transactionResult);
+  } catch (error) {
+    return responseError(error);
+  }
+}
+
+export async function updateSocial(social: SocialModel) {
+  try {
+    const transactionResult = await runTransaction(firebaseFirestore(), async (transaction) => {
+      const documentRef = doc(firebaseFirestore(), "socials", social.id);
+      const document = await transaction.get(documentRef);
+      if (!document.exists()) throw new Error(`Document ${social.id} does not exist!`);
+      transaction.update(documentRef, { profile: social.profile, isOpen: social.isOpen });
+      return social;
+    });
+    return responseSuccess<SocialModel>(transactionResult);
   } catch (error) {
     return responseError(error);
   }
