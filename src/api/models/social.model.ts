@@ -5,7 +5,7 @@ export default class SocialModel {
     public profile: string,
     public icon: string,
     public logo: string,
-    public status: boolean,
+    public isOpen: boolean,
     public order: number,
   ) {}
 }

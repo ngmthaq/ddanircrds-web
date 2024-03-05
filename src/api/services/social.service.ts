@@ -1,4 +1,4 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, doc, getDocs, runTransaction } from "firebase/firestore";
 import { firebaseFirestore } from "@/configs/firebase";
 import iconFacebook from "@/theme/assets/icon-facebook.png";
 import iconInstagram from "@/theme/assets/icon-instagram.png";
@@ -8,7 +8,7 @@ import iconSoundCloud from "@/theme/assets/icon-soundcloud.png";
 import iconTiktok from "@/theme/assets/icon-tiktok.png";
 import logoFacebook from "@/theme/assets/logo-facebook.png";
 import logoInstagram from "@/theme/assets/logo-instagram.png";
-import logoYoutube from "@/theme/assets/logo-youtube-music.png";
+import logoYoutube from "@/theme/assets/logo-youtube.png";
 import logoSpotify from "@/theme/assets/logo-spotify.png";
 import logoSoundCloud from "@/theme/assets/logo-soundcloud.png";
 import logoTiktok from "@/theme/assets/logo-tiktok.png";
@@ -35,6 +35,24 @@ export async function getAllSocials() {
     });
     outputs.sort((next, prev) => next.order - prev.order);
     return responseSuccess<SocialModel[]>(outputs);
+  } catch (error) {
+    return responseError(error);
+  }
+}
+
+export async function updateSocialList(socials: SocialModel[]) {
+  try {
+    const transactionResult = await runTransaction(firebaseFirestore(), async (transaction) => {
+      const outputs = socials.map(async (social) => {
+        const documentRef = doc(firebaseFirestore(), "socials", social.id);
+        const document = await transaction.get(documentRef);
+        if (!document.exists()) throw new Error("Document does not exist!");
+        transaction.update(documentRef, { profile: social.profile, isOpen: social.isOpen });
+        return social;
+      });
+      return Promise.all(outputs);
+    });
+    return responseSuccess<SocialModel[]>(transactionResult);
   } catch (error) {
     return responseError(error);
   }
