@@ -18,6 +18,24 @@ import {
   useAdminSocialPageAction,
   useAdminSocialPageLoader,
 } from "@/features/AdminSocialPage";
+import {
+  AdminAboutUsContentPage,
+  shouldAdminAboutUsContentPageRevalidate,
+  useAdminAboutUsContentPageAction,
+  useAdminAboutUsContentPageLoader,
+} from "@/features/AdminAboutUsContentPage";
+import {
+  AdminBannerSliderPage,
+  shouldAdminBannerSliderPageRevalidate,
+  useAdminBannerSliderPageAction,
+  useAdminBannerSliderPageLoader,
+} from "@/features/AdminBannerSliderPage";
+import {
+  AdminMusicSubmissionPage,
+  shouldAdminMusicSubmissionPageRevalidate,
+  useAdminMusicSubmissionPageAction,
+  useAdminMusicSubmissionPageLoader,
+} from "@/features/AdminMusicSubmissionPage";
 
 export type Route = RouteObject & {
   path: string;
@@ -51,4 +69,34 @@ export const AdminSocialPagePath: Route = {
   loader: useAdminSocialPageLoader,
   action: useAdminSocialPageAction,
   shouldRevalidate: shouldAdminSocialPageRevalidate,
+};
+
+export const AdminAboutUsContentPagePath: Route = {
+  path: "/admin/about",
+  id: "AdminAboutUsContentPagePath",
+  element: <AdminAboutUsContentPage />,
+  errorElement: <ErrorPage />,
+  loader: useAdminAboutUsContentPageLoader,
+  action: useAdminAboutUsContentPageAction,
+  shouldRevalidate: shouldAdminAboutUsContentPageRevalidate,
+};
+
+export const AdminBannerSliderPagePath: Route = {
+  path: "/admin/banner/slider",
+  id: "AdminBannerSliderPagePath",
+  element: <AdminBannerSliderPage />,
+  errorElement: <ErrorPage />,
+  loader: useAdminBannerSliderPageLoader,
+  action: useAdminBannerSliderPageAction,
+  shouldRevalidate: shouldAdminBannerSliderPageRevalidate,
+};
+
+export const AdminMusicSubmissionPagePath: Route = {
+  path: "/admin/music/submission",
+  id: "AdminMusicSubmissionPagePath",
+  element: <AdminMusicSubmissionPage />,
+  errorElement: <ErrorPage />,
+  loader: useAdminMusicSubmissionPageLoader,
+  action: useAdminMusicSubmissionPageAction,
+  shouldRevalidate: shouldAdminMusicSubmissionPageRevalidate,
 };
