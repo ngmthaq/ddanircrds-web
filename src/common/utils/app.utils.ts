@@ -14,3 +14,15 @@ export async function delay(seconds: number): Promise<void> {
     setTimeout(resolve, seconds * 1000);
   });
 }
+
+export async function convertBlobToBase64(blob: Blob) {
+  return new Promise((resolve, reject) => {
+    try {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result);
+      reader.readAsDataURL(blob);
+    } catch (error) {
+      reject(error);
+    }
+  });
+}

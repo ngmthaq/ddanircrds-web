@@ -1,10 +1,11 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getStorage } from "firebase/storage";
+import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
-import { getFunctions } from "firebase/functions";
+import { getFunctions, httpsCallable } from "firebase/functions";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { UserModel } from "@/api/models";
+import { AppUtils } from "@/common/utils";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -41,6 +42,34 @@ const firebaseGetAuthenticatedUser = (): Promise<UserModel | null> => {
   });
 };
 
+const firebaseGetFunctions = (functionName: string) => {
+  return httpsCallable(firebaseFunctions(), functionName);
+};
+
+const firebaseGetStorageRef = () => {
+  return ref(firebaseStorage());
+};
+
+const firebaseGetStorageFolderRef = (folder: string) => {
+  return ref(firebaseGetStorageRef(), folder);
+};
+
+const firebaseStorageUpload = async (file: File | Blob, folder: string) => {
+  return uploadBytes(firebaseGetStorageFolderRef(folder), file);
+};
+
+const firebaseStorageGetFromFullPath = async (
+  fullPath: string,
+  responseType: "base64" | "blob" | "url" = "url",
+) => {
+  const url = await getDownloadURL(ref(firebaseStorage(), fullPath));
+  if (responseType === "url") return url;
+  const response = await fetch(url);
+  const blob = await response.blob();
+  if (responseType === "blob") return blob;
+  return AppUtils.convertBlobToBase64(blob);
+};
+
 export {
   firebaseConfig,
   firebaseApp,
@@ -50,4 +79,9 @@ export {
   firebaseFirestore,
   firebaseFunctions,
   firebaseGetAuthenticatedUser,
+  firebaseGetFunctions,
+  firebaseGetStorageRef,
+  firebaseGetStorageFolderRef,
+  firebaseStorageUpload,
+  firebaseStorageGetFromFullPath,
 };

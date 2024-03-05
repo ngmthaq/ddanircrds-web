@@ -12,6 +12,7 @@ export const useAdminLoginPageAction: ActionFunction = async (action) => {
   const credential = new CredentialModel(email, password);
   const response = await AuthServices.login(credential);
   await AppUtils.delay(2);
+  AppUtils.openSnackbar({ message: "Login successfully", variant: "success" });
   AppUtils.openLoading(false);
   if (response.ok) return redirect(AdminSocialPagePath.path);
   return { message: AuthServices.handleErrorMessage(response.data as string) };
