@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { Divider, Grid, Typography } from "@mui/material";
 import { Edit } from "@mui/icons-material";
 import { AdminLayout } from "@/common/layouts";
 import { withRouterAdminLoader, type LoaderFC } from "@/common/components/H.O.C";
+import { TopBannerModel } from "@/api/models";
 import {
   AdminBannerSliderPageContext,
   type AdminBannerSliderPageContextType,
@@ -15,6 +16,8 @@ import {
 } from "./AdminBannerSliderPage.styled";
 
 const Page: LoaderFC = ({ loaderData }) => {
+  const banners = useMemo<TopBannerModel[]>(() => loaderData, [loaderData]);
+
   const AdminBannerSliderPageContextValue: AdminBannerSliderPageContextType = {};
 
   return (
@@ -44,22 +47,20 @@ const Page: LoaderFC = ({ loaderData }) => {
           correspond to the image position here. Make sure you have arranged the photo position
           correctly for your purpose.
         </Typography>
-
         <Divider />
         <Grid marginTop={2} container spacing={2}>
-          <Grid item xs={12} sm={12} md={12} lg={6} xl={4}>
-            <ImageWrapper>
-              <img
-                src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg"
-                alt="demo"
-              />
-              <OrderText>Image 1</OrderText>
-              <EditButton>
-                <Edit />
-              </EditButton>
-              <BackgroundGradient />
-            </ImageWrapper>
-          </Grid>
+          {banners.map((banner) => (
+            <Grid key={banner.id} item xs={12} sm={12} md={12} lg={6} xl={4}>
+              <ImageWrapper>
+                <img src={banner.publicUrl} alt={banner.url} />
+                <OrderText>Slider {banner.order}</OrderText>
+                <EditButton color="primary" title="Upload new image">
+                  <Edit />
+                </EditButton>
+                <BackgroundGradient />
+              </ImageWrapper>
+            </Grid>
+          ))}
         </Grid>
       </AdminLayout>
     </AdminBannerSliderPageContext.Provider>

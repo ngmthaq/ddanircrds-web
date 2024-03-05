@@ -48,6 +48,6 @@ export const BackgroundGradient = styled(Box)(({ theme }) => ({
   height: "80px",
   zIndex: 1,
   backgroundImage: `linear-gradient(to top, 
-    ${CommonUtils.hexToRgbA(theme.palette.grey[900], 0.5)}, 
+    ${CommonUtils.hexToRgbA(theme.palette.grey[900], 0.8)}, 
     ${CommonUtils.hexToRgbA(theme.palette.grey[900], 0)})`,
 }));
