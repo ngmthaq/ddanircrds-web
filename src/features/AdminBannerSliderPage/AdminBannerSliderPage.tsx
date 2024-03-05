@@ -1,67 +1,70 @@
-import React, { useMemo } from "react";
-import { Divider, Grid, Typography } from "@mui/material";
-import { Edit } from "@mui/icons-material";
+import React, { ChangeEventHandler, useMemo, useState } from "react";
+import { Divider } from "@mui/material";
 import { AdminLayout } from "@/common/layouts";
 import { withRouterAdminLoader, type LoaderFC } from "@/common/components/H.O.C";
 import { TopBannerModel } from "@/api/models";
 import {
   AdminBannerSliderPageContext,
+  type SelectedBannerType,
   type AdminBannerSliderPageContextType,
 } from "./AdminBannerSliderPage.context";
-import {
-  BackgroundGradient,
-  EditButton,
-  ImageWrapper,
-  OrderText,
-} from "./AdminBannerSliderPage.styled";
+import { AdminBannerSliderPageNote } from "./AdminBannerSliderPageNote.component";
+import { AdminBannerSliderPageGrid } from "./AdminBannerSliderPageGrid.component";
+import { AdminBannerSliderPageUploadDialog } from "./AdminBannerSliderPageUploadDialog.component";
 
 const Page: LoaderFC = ({ loaderData }) => {
   const banners = useMemo<TopBannerModel[]>(() => loaderData, [loaderData]);
 
-  const AdminBannerSliderPageContextValue: AdminBannerSliderPageContextType = {};
+  const [selectedBanner, setSelectedBanner] = useState<SelectedBannerType>({
+    id: null,
+    image: null,
+    preview: null,
+    element: null,
+  });
+
+  const handleCancelUpload = () => {
+    if (selectedBanner.element) selectedBanner.element.value = "";
+    setSelectedBanner((currentState) => ({
+      ...currentState,
+      id: null,
+      image: null,
+      element: null,
+      preview: null,
+    }));
+  };
+
+  const handleChangeBanner: ChangeEventHandler<HTMLInputElement> = (event) => {
+    const files = event.target.files;
+    if (files && files.length > 0 && Boolean(files.item(0))) {
+      const bannerId = event.target.getAttribute("data-id");
+      const file = files.item(0);
+      const preview = URL.createObjectURL(file as File);
+      setSelectedBanner((currentState) => ({
+        ...currentState,
+        id: bannerId,
+        image: file,
+        element: event.target,
+        preview: preview,
+      }));
+    } else {
+      handleCancelUpload();
+    }
+  };
+
+  const AdminBannerSliderPageContextValue: AdminBannerSliderPageContextType = {
+    banners: banners,
+    selectedBanner: selectedBanner,
+    handleChangeBanner: handleChangeBanner,
+    handleCancelUpload: handleCancelUpload,
+  };
 
   return (
     <AdminBannerSliderPageContext.Provider value={AdminBannerSliderPageContextValue}>
       <AdminLayout title="Top Banner Slider" contentMaxWidth="100%">
-        <Typography variant="caption" display="block" marginBottom={1}>
-          <strong>Advice about User Experience:</strong> High quality images should be used to
-          improve user experience. However, you should not upload files that are too large to
-          overload the server <strong>(maximum 20MB)</strong>.
-        </Typography>
-        <Typography variant="caption" display="block" marginBottom={1}>
-          <strong>Advice about Browser Compatibility:</strong> We recommend using images in{" "}
-          <strong>PNG/JPG/JPEG</strong> format because they are compatible with all browsers.
-        </Typography>
-        <Typography variant="caption" display="block" marginBottom={1}>
-          <strong>Note about File Name:</strong> The file name should only contain characters from{" "}
-          <strong>a-z, A-Z</strong> and <strong>numbers from 0-9</strong>, should not contain
-          special characters and the maximum file name length is <strong>100 characters</strong>.
-        </Typography>
-        <Typography variant="caption" display="block" marginBottom={1}>
-          <strong>Note about Firebase Storage:</strong> After being modified, images will be deleted
-          from Firebase Storage to avoid memory overload leading to{" "}
-          <strong>additional maintenance fees</strong>.
-        </Typography>
-        <Typography variant="caption" display="block" marginBottom={2}>
-          <strong>Note about Slider Order:</strong> The order of sliders on the home page will
-          correspond to the image position here. Make sure you have arranged the photo position
-          correctly for your purpose.
-        </Typography>
+        <AdminBannerSliderPageNote />
         <Divider />
-        <Grid marginTop={2} container spacing={2}>
-          {banners.map((banner) => (
-            <Grid key={banner.id} item xs={12} sm={12} md={12} lg={6} xl={4}>
-              <ImageWrapper>
-                <img src={banner.publicUrl} alt={banner.url} />
-                <OrderText>Slider {banner.order}</OrderText>
-                <EditButton color="primary" title="Upload new image">
-                  <Edit />
-                </EditButton>
-                <BackgroundGradient />
-              </ImageWrapper>
-            </Grid>
-          ))}
-        </Grid>
+        <AdminBannerSliderPageGrid />
+        <AdminBannerSliderPageUploadDialog />
       </AdminLayout>
     </AdminBannerSliderPageContext.Provider>
   );

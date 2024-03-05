@@ -51,3 +51,13 @@ export const BackgroundGradient = styled(Box)(({ theme }) => ({
     ${CommonUtils.hexToRgbA(theme.palette.grey[900], 0.8)}, 
     ${CommonUtils.hexToRgbA(theme.palette.grey[900], 0)})`,
 }));
+
+export const PreviewCard = styled(Box)(({ theme }) => ({
+  "& img": {
+    width: "100%",
+    height: "auto",
+    objectFit: "contain",
+    marginBottom: "8px",
+    borderRadius: "4px",
+  },
+}));
