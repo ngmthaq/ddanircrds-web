@@ -20,7 +20,10 @@ export async function getAll() {
   }
 }
 
-export async function getAllWithImage(banners: TopBannerModel[], index: number = 0) {
+export async function getAllWithImage(
+  banners: TopBannerModel[],
+  index: number = 0,
+): Promise<TopBannerModel[]> {
   if (banners.length === 0) return banners;
   if (index === banners.length) return banners;
   const banner = banners[index];

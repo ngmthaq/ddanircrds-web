@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
+import { deleteObject, getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 import { getFunctions, httpsCallable } from "firebase/functions";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -70,6 +70,17 @@ const firebaseStorageGetFromFullPath = async (
   return AppUtils.convertBlobToBase64(blob);
 };
 
+const firebaseStorageDeleteFromFullPath = async (fullPath: string) => {
+  try {
+    const imageRef = ref(firebaseStorage(), fullPath);
+    await deleteObject(imageRef);
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+};
+
 export {
   firebaseConfig,
   firebaseApp,
@@ -84,4 +95,5 @@ export {
   firebaseGetStorageFolderRef,
   firebaseStorageUpload,
   firebaseStorageGetFromFullPath,
+  firebaseStorageDeleteFromFullPath,
 };
