@@ -8,7 +8,7 @@ export async function logout({ openLoading }: { openLoading: boolean }) {
     await AuthServices.logout();
     localStorage.clear();
     sessionStorage.clear();
-    await AppUtils.delay(1);
+    await AppUtils.delay(2);
     window.location.href = AdminLoginPagePath.path;
   } catch (error) {
     console.error(error);

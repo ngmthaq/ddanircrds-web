@@ -19,6 +19,7 @@ export const useAdminSocialPageAction: ActionFunction = async (action) => {
       return new SocialModel(id, name, profile, icon, logo, isOpen, order);
     });
     const response = await SocialServices.updateSocialList(socialModels);
+    await AppUtils.delay(2);
     AppUtils.openLoading(false);
     if (response.ok) {
       AppUtils.openSnackbar({

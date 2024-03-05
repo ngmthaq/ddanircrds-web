@@ -12,7 +12,7 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import { type LoaderFC, withRouterLoader } from "@/common/components/H.O.C";
+import { type LoaderFC, withRouterAdminLoader } from "@/common/components/H.O.C";
 import { AdminLayout } from "@/common/layouts";
 import { LodashUtils } from "@/common/utils";
 import { SocialModel } from "@/api/models";
@@ -163,4 +163,4 @@ const Page: LoaderFC = ({ loaderData }) => {
   );
 };
 
-export const AdminSocialPage = withRouterLoader(Page);
+export const AdminSocialPage = withRouterAdminLoader(Page);

@@ -1,6 +1,6 @@
 import React from "react";
 import { AdminLayout } from "@/common/layouts";
-import { withRouterLoader, type LoaderFC } from "@/common/components/H.O.C";
+import { withRouterAdminLoader, type LoaderFC } from "@/common/components/H.O.C";
 import {
   AdminMusicSubmissionPageContext,
   type AdminMusicSubmissionPageContextType,
@@ -18,4 +18,4 @@ const Page: LoaderFC = ({ loaderData }) => {
   );
 };
 
-export const AdminMusicSubmissionPage = withRouterLoader(Page);
+export const AdminMusicSubmissionPage = withRouterAdminLoader(Page);
