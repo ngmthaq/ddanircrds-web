@@ -13,6 +13,7 @@ export type AdminBannerSliderPageContextType = {
   selectedBanner?: SelectedBannerType;
   handleChangeBanner: ChangeEventHandler<HTMLInputElement>;
   handleCancelUpload: () => void;
+  handleUpload: () => void;
 };
 
 export const AdminBannerSliderPageContext = createContext<AdminBannerSliderPageContextType>({
@@ -20,4 +21,5 @@ export const AdminBannerSliderPageContext = createContext<AdminBannerSliderPageC
   selectedBanner: undefined,
   handleChangeBanner: () => {},
   handleCancelUpload: () => {},
+  handleUpload: () => {},
 });

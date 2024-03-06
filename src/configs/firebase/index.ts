@@ -54,8 +54,8 @@ const firebaseGetStorageFolderRef = (folder: string) => {
   return ref(firebaseGetStorageRef(), folder);
 };
 
-const firebaseStorageUpload = async (file: File | Blob, folder: string) => {
-  return uploadBytes(firebaseGetStorageFolderRef(folder), file);
+const firebaseStorageUpload = async (file: File | Blob, path: string) => {
+  return uploadBytes(firebaseGetStorageFolderRef(path), file);
 };
 
 const firebaseStorageGetFromFullPath = async (
@@ -71,14 +71,8 @@ const firebaseStorageGetFromFullPath = async (
 };
 
 const firebaseStorageDeleteFromFullPath = async (fullPath: string) => {
-  try {
-    const imageRef = ref(firebaseStorage(), fullPath);
-    await deleteObject(imageRef);
-    return true;
-  } catch (error) {
-    console.error(error);
-    return false;
-  }
+  const imageRef = ref(firebaseStorage(), fullPath);
+  await deleteObject(imageRef);
 };
 
 export {

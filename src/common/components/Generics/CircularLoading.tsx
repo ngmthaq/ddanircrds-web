@@ -7,7 +7,9 @@ export const CircularLoading: FC = () => {
     <TransitionGroup>
       <Fade>
         <Container>
-          <CircularProgress size={40} />
+          <Wrapper>
+            <CircularProgress size={40} />
+          </Wrapper>
         </Container>
       </Fade>
     </TransitionGroup>
@@ -23,6 +25,17 @@ const Container = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  zIndex: theme.zIndex.modal,
+  zIndex: theme.zIndex.tooltip,
   background: "rgba(0, 0, 0, 0.1)",
+}));
+
+const Wrapper = styled(Box)(({ theme }) => ({
+  width: "80px",
+  height: "80px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  zIndex: theme.zIndex.tooltip,
+  background: "#fff",
+  borderRadius: "4px",
 }));

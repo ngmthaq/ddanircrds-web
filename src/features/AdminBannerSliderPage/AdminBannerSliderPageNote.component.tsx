@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { Typography } from "@mui/material";
+import { AppConst } from "@/configs/const";
 
 export const AdminBannerSliderPageNote = () => {
   return (
@@ -7,7 +8,7 @@ export const AdminBannerSliderPageNote = () => {
       <Typography variant="caption" display="block" marginBottom={1}>
         <strong>Advice about User Experience:</strong> High quality images should be used to improve
         user experience. However, you should not upload files that are too large to overload the
-        server <strong>(maximum 20MB)</strong>.
+        server <strong>(maximum {AppConst.ACCEPTABLE_IMAGE_FILE_SIZE}MB)</strong>.
       </Typography>
       <Typography variant="caption" display="block" marginBottom={1}>
         <strong>Advice about Browser Compatibility:</strong> We recommend using images in{" "}

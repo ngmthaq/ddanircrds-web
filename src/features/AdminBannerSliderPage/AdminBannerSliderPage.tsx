@@ -1,4 +1,5 @@
 import React, { ChangeEventHandler, useMemo, useState } from "react";
+import { useSubmit } from "react-router-dom";
 import { Divider } from "@mui/material";
 import { AdminLayout } from "@/common/layouts";
 import { withRouterAdminLoader, type LoaderFC } from "@/common/components/H.O.C";
@@ -13,6 +14,8 @@ import { AdminBannerSliderPageGrid } from "./AdminBannerSliderPageGrid.component
 import { AdminBannerSliderPageUploadDialog } from "./AdminBannerSliderPageUploadDialog.component";
 
 const Page: LoaderFC = ({ loaderData }) => {
+  const submit = useSubmit();
+
   const banners = useMemo<TopBannerModel[]>(() => loaderData, [loaderData]);
 
   const [selectedBanner, setSelectedBanner] = useState<SelectedBannerType>({
@@ -51,11 +54,24 @@ const Page: LoaderFC = ({ loaderData }) => {
     }
   };
 
+  const handleUpload = () => {
+    const formData = new FormData();
+    formData.set("bannerId", selectedBanner.id || "");
+    formData.set("file", selectedBanner.image || "");
+    submit(formData, {
+      action: window.location.pathname,
+      method: "post",
+      encType: "multipart/form-data",
+    });
+    handleCancelUpload();
+  };
+
   const AdminBannerSliderPageContextValue: AdminBannerSliderPageContextType = {
     banners: banners,
     selectedBanner: selectedBanner,
     handleChangeBanner: handleChangeBanner,
     handleCancelUpload: handleCancelUpload,
+    handleUpload: handleUpload,
   };
 
   return (
