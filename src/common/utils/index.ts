@@ -10,5 +10,15 @@ import * as CommonUtils from "./common.utils";
 import * as StorageUtils from "./storage.utils";
 import * as AuthUtils from "./auth.utils";
 import * as AppUtils from "./app.utils";
+import * as DateTimeUtils from "./datetime.utils";
 
-export { LodashUtils, HumpsUtils, EventBusUtils, CommonUtils, StorageUtils, AuthUtils, AppUtils };
+export {
+  LodashUtils,
+  HumpsUtils,
+  EventBusUtils,
+  CommonUtils,
+  StorageUtils,
+  AuthUtils,
+  AppUtils,
+  DateTimeUtils,
+};

@@ -20,3 +20,16 @@ export function hexToRgbA(hex: string, opacity: number = 1) {
   }
   throw new Error("Bad Hex");
 }
+
+export function parseJson<T>(json: string, defaultValue: T): T {
+  try {
+    return JSON.parse(json);
+  } catch (error) {
+    console.error(error);
+    return defaultValue;
+  }
+}
+
+export function paginate<T>(input: T[], page: number, limit: number) {
+  return input.slice((page - 1) * limit, page * limit);
+}
