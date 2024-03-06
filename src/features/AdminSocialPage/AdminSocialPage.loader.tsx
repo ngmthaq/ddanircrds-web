@@ -8,11 +8,11 @@ import { ApiConst } from "@/configs/const";
 export const useAdminSocialPageLoader: LoaderFunction = async (loader) => {
   try {
     AppUtils.openLoading();
-    await AppUtils.delay(2);
     const user = await firebaseGetAuthenticatedUser();
     if (!user) return window.location.replace(AdminLoginPagePath.path);
     console.info("Welcome Back,", user.email);
     const response = await SocialServices.getAllSocials();
+    await AppUtils.delay(2);
     AppUtils.openLoading(false);
     if (response.ok) return response.data;
     else throw new Response(response.message, { status: response.status });

@@ -8,11 +8,11 @@ import { TopBannerServices } from "@/api/services";
 export const useAdminBannerSliderPageLoader: LoaderFunction = async (loader) => {
   try {
     AppUtils.openLoading();
-    await AppUtils.delay(2);
     const user = await firebaseGetAuthenticatedUser();
     if (!user) return window.location.replace(AdminLoginPagePath.path);
     console.info("Welcome Back,", user.email);
     const response = await TopBannerServices.getAll();
+    await AppUtils.delay(2);
     AppUtils.openLoading(false);
     if (response.ok) return response.data;
     else throw new Response(response.message, { status: response.status });
