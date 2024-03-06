@@ -24,7 +24,7 @@ export const AdminBannerSliderPageUploadDialog = () => {
 
   const isOpen = Boolean(selectedBanner && selectedBanner.image);
 
-  const isDisableSubmitButton = errors.ext || errors.name || errors.size;
+  const isError = errors.ext || errors.name || errors.size;
 
   useEffect(() => {
     if (isOpen) {
@@ -36,14 +36,19 @@ export const AdminBannerSliderPageUploadDialog = () => {
     <Dialog fullWidth open={isOpen}>
       <DialogTitle>Upload Confirmation</DialogTitle>
       <DialogContent>
-        <PreviewCard sx={{ mb: 2 }}>
-          <img src={selectedBanner?.preview || ""} alt={selectedBanner?.id || "preview image"} />
+        <PreviewCard>
+          {!isError && (
+            <img src={selectedBanner?.preview || ""} alt={selectedBanner?.id || "preview image"} />
+          )}
           <Divider />
+          <Typography variant="subtitle2" marginTop={2}>
+            Image validation:
+          </Typography>
           <Typography
             variant="caption"
             display="block"
             color={(theme) => (errors.size ? theme.palette.error.main : theme.palette.success.main)}
-            marginTop={2}
+            marginTop={1}
           >
             1. File size maximum 20MB
           </Typography>
@@ -51,7 +56,6 @@ export const AdminBannerSliderPageUploadDialog = () => {
             variant="caption"
             display="block"
             color={(theme) => (errors.ext ? theme.palette.error.main : theme.palette.success.main)}
-            marginTop={1}
           >
             2. Using image in PNG/JPG/JPEG format
           </Typography>
@@ -59,7 +63,6 @@ export const AdminBannerSliderPageUploadDialog = () => {
             variant="caption"
             display="block"
             color={(theme) => (errors.name ? theme.palette.error.main : theme.palette.success.main)}
-            marginTop={1}
           >
             3. File name should only contain characters from a-z, A-Z, 0-9
           </Typography>
@@ -67,7 +70,6 @@ export const AdminBannerSliderPageUploadDialog = () => {
             variant="caption"
             display="block"
             color={(theme) => (errors.name ? theme.palette.error.main : theme.palette.success.main)}
-            marginTop={1}
           >
             4. File name length maximum 100 characters
           </Typography>
@@ -77,7 +79,7 @@ export const AdminBannerSliderPageUploadDialog = () => {
         <Button fullWidth variant="outlined" onClick={handleCancelUpload}>
           Cancel
         </Button>
-        <Button fullWidth variant="contained" disabled={isDisableSubmitButton}>
+        <Button fullWidth variant="contained" disabled={isError}>
           Upload
         </Button>
       </DialogActions>
