@@ -11,9 +11,9 @@ import {
   TableCell,
   TableRow,
 } from "@mui/material";
+import { Close, Launch } from "@mui/icons-material";
 import { AdminMusicSubmissionPageContext } from "./AdminMusicSubmissionPage.context";
 import { DateTimeUtils } from "@/common/utils";
-import { Close } from "@mui/icons-material";
 
 export const AdminMusicSubmissionPageDetails = () => {
   const { selectedSubmission, handleSetSelectSubmission } = useContext(
@@ -48,7 +48,12 @@ export const AdminMusicSubmissionPageDetails = () => {
               <TableCell sx={{ width: "20%" }}>
                 <strong>Email</strong>
               </TableCell>
-              <TableCell>{selectedSubmission?.email || ""}</TableCell>
+              <TableCell>
+                <a href={`mailto:${selectedSubmission?.email || ""}`} title="Click to reply">
+                  {selectedSubmission?.email || ""}
+                  <Launch fontSize="small" sx={{ width: "12px", height: "12px" }} />
+                </a>
+              </TableCell>
             </TableRow>
             <TableRow>
               <TableCell sx={{ width: "20%" }}>
@@ -58,6 +63,7 @@ export const AdminMusicSubmissionPageDetails = () => {
                 {selectedSubmission?.instagram ? (
                   <a href={selectedSubmission.instagram} target="_blank" rel="noreferrer">
                     {selectedSubmission.instagram}
+                    <Launch fontSize="small" sx={{ width: "12px", height: "12px" }} />
                   </a>
                 ) : (
                   "--"
@@ -72,6 +78,7 @@ export const AdminMusicSubmissionPageDetails = () => {
                 {selectedSubmission?.spotify ? (
                   <a href={selectedSubmission.spotify} target="_blank" rel="noreferrer">
                     {selectedSubmission.spotify}
+                    <Launch fontSize="small" sx={{ width: "12px", height: "12px" }} />
                   </a>
                 ) : (
                   "--"
@@ -88,6 +95,7 @@ export const AdminMusicSubmissionPageDetails = () => {
                       <Fragment key={index}>
                         <a href={link} target="_blank" rel="noreferrer">
                           {link}
+                          <Launch fontSize="small" sx={{ width: "12px", height: "12px" }} />
                         </a>
                         <br />
                       </Fragment>
@@ -111,6 +119,12 @@ export const AdminMusicSubmissionPageDetails = () => {
                   "DD/MM/YYYY HH:mm",
                 )}
               </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell sx={{ width: "20%" }}>
+                <strong>Collection ID</strong>
+              </TableCell>
+              <TableCell>{selectedSubmission?.id || ""}</TableCell>
             </TableRow>
           </TableBody>
         </Table>

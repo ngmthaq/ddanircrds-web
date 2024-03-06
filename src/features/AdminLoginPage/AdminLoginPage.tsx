@@ -85,7 +85,10 @@ const Page: LoaderFC = () => {
               <Divider />
               <Typography variant="caption" display="block" textAlign="center" marginTop="16px">
                 Don't have an account? <br />
-                Contact the administrator to be granted a system login account.
+                Contact the administrator to be granted a system login account. <br />
+                <a href="/" style={{ textDecoration: "underline" }}>
+                  Or click here to go back home.
+                </a>
               </Typography>
             </Form>
           </LoginForm>

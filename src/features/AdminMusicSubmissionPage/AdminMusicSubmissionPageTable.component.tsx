@@ -33,9 +33,14 @@ export const AdminMusicSubmissionPageTable = () => {
             {submissions.length > 0 ? (
               submissions.map((submission) => (
                 <TableRow key={submission.id}>
-                  <CustomTableCell title={submission.email}>{submission.email}</CustomTableCell>
+                  <CustomTableCell title={submission.email}>
+                    <a href={`mailto:${submission.email}`} title="Click to reply">
+                      {submission.email}
+                      <Launch fontSize="small" sx={{ width: "12px", height: "12px" }} />
+                    </a>
+                  </CustomTableCell>
                   <CustomTableCell title={submission.name}>{submission.name}</CustomTableCell>
-                  <TableCell title={submission.instagram}>
+                  <CustomTableCell title={submission.instagram}>
                     {submission.instagram ? (
                       <a href={submission.instagram} target="_blank" rel="noreferrer">
                         Open Link
@@ -44,15 +49,15 @@ export const AdminMusicSubmissionPageTable = () => {
                     ) : (
                       "--"
                     )}
-                  </TableCell>
-                  <TableCell>
+                  </CustomTableCell>
+                  <CustomTableCell>
                     {DateTimeUtils.convertSecondsToDatetime(
                       submission.createdAt,
                       "DD/MM/YYYY HH:mm",
                     )}
-                  </TableCell>
-                  <TableCell>{submission.id}</TableCell>
-                  <TableCell>
+                  </CustomTableCell>
+                  <CustomTableCell>{submission.id}</CustomTableCell>
+                  <CustomTableCell>
                     <IconButton
                       size="small"
                       title="Show more submission details"
@@ -60,7 +65,7 @@ export const AdminMusicSubmissionPageTable = () => {
                     >
                       <RemoveRedEye fontSize="small" />
                     </IconButton>
-                  </TableCell>
+                  </CustomTableCell>
                 </TableRow>
               ))
             ) : (
