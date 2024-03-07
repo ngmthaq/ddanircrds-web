@@ -220,3 +220,35 @@ export const SliderText = styled(Typography)(({ theme }) => ({
   background: "#000000",
   padding: "40px 8px",
 }));
+
+export const SocialSliderContainer = styled(Box)(({ theme }) => ({
+  background: "#000000",
+
+  "& .slick-prev": {
+    left: "0 !important",
+    zIndex: 1,
+  },
+
+  "& .slick-next": {
+    right: "0 !important",
+    zIndex: 1,
+  },
+}));
+
+export const SocialSliderItem = styled("a")(({ theme }) => ({
+  display: "flex",
+  width: "100%",
+  height: "200px",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: "16px 24px",
+  outline: "none",
+  border: "none",
+
+  "& img": {
+    display: "block",
+    width: "100%",
+    height: "100%",
+    objectFit: "contain",
+  },
+}));

@@ -93,10 +93,9 @@ const Page: LoaderFC = ({ loaderData }) => {
             <TableHead>
               <TableRow>
                 <TableCell sx={{ width: "10%" }}>Icon</TableCell>
-                <TableCell sx={{ width: "10%" }}>Name</TableCell>
-                <TableCell sx={{ width: "10%" }}>Logo</TableCell>
+                <TableCell sx={{ width: "15%" }}>Name</TableCell>
                 <TableCell sx={{ width: "40%" }}>Social Profile</TableCell>
-                <TableCell sx={{ width: "20%" }}>Collection ID</TableCell>
+                <TableCell sx={{ width: "25%" }}>Collection ID</TableCell>
                 <TableCell sx={{ width: "10%" }}>Active</TableCell>
               </TableRow>
             </TableHead>
@@ -107,13 +106,6 @@ const Page: LoaderFC = ({ loaderData }) => {
                     <Avatar sx={{ width: 24, height: 24 }} src={socialNetwork.icon} />
                   </TableCell>
                   <TableCell>{socialNetwork.name}</TableCell>
-                  <TableCell>
-                    <img
-                      src={socialNetwork.logo}
-                      alt={socialNetwork.name}
-                      style={{ height: "100%", width: "80%", objectFit: "contain" }}
-                    />
-                  </TableCell>
                   <TableCell>
                     <OutlinedInput
                       fullWidth

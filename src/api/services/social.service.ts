@@ -11,7 +11,7 @@ import logoInstagram from "@/theme/assets/logo-instagram.png";
 import logoYoutube from "@/theme/assets/logo-youtube.png";
 import logoSpotify from "@/theme/assets/logo-spotify.png";
 import logoSoundCloud from "@/theme/assets/logo-soundcloud.png";
-import logoTiktok from "@/theme/assets/logo-tiktok.png";
+import logoTiktok from "@/theme/assets/logo-tiktok.svg";
 import { responseError, responseSuccess } from "../configs";
 import { SocialModel } from "../models";
 

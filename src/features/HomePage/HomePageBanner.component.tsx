@@ -1,7 +1,6 @@
 import React, { Fragment, useContext } from "react";
 import { Carousel } from "react-responsive-carousel";
 import { HomePageContext } from "./HomePage.context";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 import {
   SliderContainer,
   SliderContainerBackdrop,
@@ -9,6 +8,7 @@ import {
   SliderItem,
   SliderText,
 } from "./HomePage.styled";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export const HomePageBanner = () => {
   const { banners } = useContext(HomePageContext);
