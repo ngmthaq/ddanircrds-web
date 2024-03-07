@@ -305,4 +305,8 @@ export const HomePageSectionTitle = styled(Typography)(({ theme }) => ({
   letterSpacing: "0em",
   textAlign: "center",
   margin: "40px 0 32px",
+
+  [theme.breakpoints.down("md")]: {
+    fontSize: "32px",
+  },
 }));
