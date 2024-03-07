@@ -1,3 +1,4 @@
+import { CommonUtils } from "@/common/utils";
 import { Box, Container, Drawer, IconButton, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
@@ -17,6 +18,7 @@ export const HeaderContainer = styled(Box)(({ theme }) => ({
   left: "0px",
   width: "100%",
   padding: "0 16px",
+  zIndex: 4,
 }));
 
 export const HeaderWrapper = styled(Container)(({ theme }) => ({
@@ -27,6 +29,7 @@ export const HeaderWrapper = styled(Container)(({ theme }) => ({
   display: "flex",
   alignItems: "flex-start",
   justifyContent: "space-between",
+  boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
 }));
 
 export const HeaderLogo = styled("a")(({ theme }) => ({
@@ -82,6 +85,7 @@ export const MobileHeaderContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
+  zIndex: 4,
 
   [theme.breakpoints.down("sm")]: {
     padding: "8px",
@@ -107,6 +111,7 @@ export const MobileHeaderLogo = styled("a")(({ theme }) => ({
 
 export const MobileHeaderMenu = styled(IconButton)(({ theme }) => ({
   flexShrink: 0,
+  color: "#ffffff",
 }));
 
 export const MobileDrawer = styled(Drawer)(({ theme }) => ({
@@ -153,4 +158,65 @@ export const MobileDrawerNav = styled("nav")(({ theme }) => ({
       cursor: "not-allowed",
     },
   },
+}));
+
+export const SliderContainer = styled(Box)(({ theme }) => ({
+  width: "100%",
+  height: "100%",
+  position: "relative",
+
+  "& .control-dots": {
+    zIndex: 3,
+
+    "& .dot": {
+      width: "80px",
+      height: "4px",
+      borderRadius: "1px",
+
+      [theme.breakpoints.down("md")]: {
+        width: "40px",
+      },
+
+      [theme.breakpoints.down("sm")]: {
+        width: "30px",
+      },
+    },
+  },
+}));
+
+export const SliderContainerBackdrop = styled(Box)(({ theme }) => ({
+  width: "100%",
+  height: "100%",
+  position: "absolute",
+  top: "0",
+  left: "0",
+  background: CommonUtils.hexToRgbA("#000000", 0.4),
+  zIndex: 1,
+}));
+
+export const SliderContainerBottomBackdrop = styled(Box)(({ theme }) => ({
+  height: "120px",
+  width: "100%",
+  position: "absolute",
+  left: "0",
+  bottom: "0",
+  background: "linear-gradient(to top, #000000, transparent)",
+  zIndex: 2,
+}));
+
+export const SliderItem = styled("img")(({ theme }) => ({
+  width: "100vw",
+  height: "90vh",
+  objectFit: "cover",
+}));
+
+export const SliderText = styled(Typography)(({ theme }) => ({
+  fontSize: "20px",
+  fontWeight: "700",
+  lineHeight: "27px",
+  letterSpacing: "0em",
+  textAlign: "center",
+  color: "#f0f0f0",
+  background: "#000000",
+  padding: "40px 8px",
 }));
