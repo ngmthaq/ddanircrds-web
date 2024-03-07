@@ -30,3 +30,10 @@ export const changeTheme = (mode: Palette["mode"]) => {
   StorageUtils.setStorage<Palette["mode"]>("theme", mode);
   EventBusUtils.emit<Palette["mode"]>("changeTheme", mode);
 };
+
+export const customPaleteColor = {
+  light: "#F5BCBC",
+  main: "#F91515",
+  dark: "#A70000",
+  contrastText: "#ffffff",
+};

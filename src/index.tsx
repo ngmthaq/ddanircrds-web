@@ -6,6 +6,7 @@ import { useTheme } from "./common/hooks";
 import { NotistackProvider } from "./common/providers";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import "./theme/scss/index.scss";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 
