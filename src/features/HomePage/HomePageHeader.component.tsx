@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react";
 import { Menu } from "@mui/icons-material";
 import { useResponsive } from "@/common/hooks";
 import logo from "@/theme/assets/logo-app-4x.png";
+import { HomePageHeaderDrawer } from "./HomePageHeaderDrawer.component";
 import {
   HeaderContainer,
   HeaderLogo,
@@ -11,7 +12,6 @@ import {
   MobileHeaderMenu,
   MobileHeaderLogo,
 } from "./HomePage.styled";
-import { HomePageHeaderDrawer } from "./HomePageHeaderDrawer.component";
 
 export const HomePageHeader = () => {
   const { isDesktop } = useResponsive();

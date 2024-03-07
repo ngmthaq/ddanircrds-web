@@ -4,8 +4,13 @@
   font-family: "Poppins", sans-serif !important;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 .poppins-thin {

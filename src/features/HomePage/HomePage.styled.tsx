@@ -4,7 +4,7 @@ import { styled } from "@mui/material/styles";
 
 export const HeaderColor = "#1E1E1E";
 
-export const HeaderLinearGradient = "linear-gradient(135.81deg, #F91515 16.01%, #020000 84.96%)";
+export const MainLinearGradient = "linear-gradient(135.81deg, #F91515 16.01%, #020000 84.96%)";
 
 export const HeaderHeight = 74;
 
@@ -36,7 +36,7 @@ export const HeaderLogo = styled("a")(({ theme }) => ({
   display: "inline-flex",
   width: "100px",
   height: "100px",
-  background: HeaderLinearGradient,
+  background: MainLinearGradient,
   alignItems: "center",
   justifyContent: "center",
   borderRadius: "50%",
@@ -96,7 +96,7 @@ export const MobileHeaderLogo = styled("a")(({ theme }) => ({
   display: "inline-flex",
   width: "60px",
   height: "60px",
-  background: HeaderLinearGradient,
+  background: MainLinearGradient,
   alignItems: "center",
   justifyContent: "center",
   borderRadius: "50%",
@@ -251,4 +251,58 @@ export const SocialSliderItem = styled("a")(({ theme }) => ({
     height: "100%",
     objectFit: "contain",
   },
+}));
+
+export const AboutUsContainer = styled(Box)(({ theme }) => ({
+  padding: "0 16px",
+}));
+
+export const AboutUsWrapper = styled(Box)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  gap: "16px",
+
+  [theme.breakpoints.down("lg")]: {
+    flexDirection: "column-reverse",
+  },
+}));
+
+export const AboutUsContent = styled(Box)(({ theme }) => ({
+  height: "100%",
+  background: "#1E1E1E",
+  padding: "32px",
+  color: "#fff",
+  borderRadius: "8px",
+}));
+
+export const AboutUsLogo = styled(Box)(({ theme }) => ({
+  width: "100%",
+  minWidth: "250px",
+  background: MainLinearGradient,
+  borderRadius: "8px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  alignSelf: "stretch",
+
+  [theme.breakpoints.down("lg")]: {
+    height: "100%",
+    minHeight: "250px",
+  },
+
+  "& img": {
+    width: "80px",
+    height: "100px",
+    objectFit: "contain",
+  },
+}));
+
+export const HomePageSectionTitle = styled(Typography)(({ theme }) => ({
+  fontSize: "40px",
+  fontWeight: "700",
+  lineHeight: "47px",
+  letterSpacing: "0em",
+  textAlign: "center",
+  margin: "40px 0 32px",
 }));

@@ -5,6 +5,7 @@ import { HomePageContext, type HomePageContextType, type LoaderDataType } from "
 import { HomePageHeader } from "./HomePageHeader.component";
 import { HomePageBanner } from "./HomePageBanner.component";
 import { HomePageSocialLinks } from "./HomePageSocialLinks.component";
+import { HomePageAboutUs } from "./HomePageAboutUs.component";
 
 const Page: LoaderFC = ({ loaderData }) => {
   const { banners, socials, aboutUs }: LoaderDataType = useMemo(() => loaderData, [loaderData]);
@@ -21,6 +22,7 @@ const Page: LoaderFC = ({ loaderData }) => {
         <HomePageHeader />
         <HomePageBanner />
         <HomePageSocialLinks />
+        <HomePageAboutUs />
       </BaseLayout>
     </HomePageContext.Provider>
   );
