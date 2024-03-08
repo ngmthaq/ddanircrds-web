@@ -1,5 +1,6 @@
 import { CommonUtils } from "@/common/utils";
-import { Box, Container, Drawer, IconButton, Typography } from "@mui/material";
+import { customPaleteColor } from "@/theme/material";
+import { Box, Button, Container, Drawer, IconButton, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 export const HeaderColor = "#1E1E1E";
@@ -62,7 +63,7 @@ export const HeaderNavContainer = styled("nav")(({ theme }) => ({
   "& a": {
     fontSize: "20px",
     fontWeight: "500",
-    lineLeight: "30px",
+    lineHeight: "30px",
     letterSpacing: "0em",
     textAlign: "left",
     color: "#fff",
@@ -144,7 +145,7 @@ export const MobileDrawerNav = styled("nav")(({ theme }) => ({
   "& a": {
     fontSize: "20px",
     fontWeight: "500",
-    lineLeight: "30px",
+    lineHeight: "30px",
     letterSpacing: "0em",
     textAlign: "left",
     color: "#fff",
@@ -298,15 +299,43 @@ export const AboutUsLogo = styled(Box)(({ theme }) => ({
   },
 }));
 
+export const FormContainer = styled(Box)(({ theme }) => ({
+  padding: "0 16px",
+}));
+
+export const FormHeadingContainer = styled(Box)(({ theme }) => ({
+  width: "100%",
+  maxWidth: "600px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  margin: "0 auto",
+  gap: "32px",
+}));
+
 export const HomePageSectionTitle = styled(Typography)(({ theme }) => ({
   fontSize: "40px",
   fontWeight: "700",
   lineHeight: "47px",
   letterSpacing: "0em",
   textAlign: "center",
-  margin: "40px 0 32px",
+  margin: "48px 0 32px",
 
   [theme.breakpoints.down("md")]: {
     fontSize: "32px",
+  },
+}));
+
+export const HomePageMainButton = styled(Button)(({ theme }) => ({
+  borderRadius: "24px",
+
+  "&.MuiButton-outlined": {
+    color: customPaleteColor.main,
+    borderColor: customPaleteColor.main,
+  },
+
+  "&.MuiButton-contained": {
+    color: "#fff",
+    background: customPaleteColor.main,
   },
 }));
