@@ -1,8 +1,8 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, doc, getDocs, setDoc } from "firebase/firestore";
 import { firebaseFirestore } from "@/configs/firebase";
+import { CommonUtils } from "@/common/utils";
 import { responseError, responseSuccess } from "../configs";
 import { MusicSubmissionModel } from "../models";
-import { CommonUtils } from "@/common/utils";
 
 export async function getAll() {
   try {
@@ -24,6 +24,25 @@ export async function getAll() {
     });
     outputs.sort((next, prev) => prev.createdAt - next.createdAt);
     return responseSuccess<MusicSubmissionModel[]>(outputs);
+  } catch (error) {
+    return responseError(error);
+  }
+}
+
+export async function insert(submission: MusicSubmissionModel) {
+  try {
+    const ref = doc(firebaseFirestore(), "music-submissions", submission.id);
+    const data = {
+      createdAt: submission.createdAt,
+      email: submission.email,
+      info: submission.info,
+      instagram: submission.instagram,
+      musicLinks: JSON.stringify(submission.musicLinks),
+      name: submission.name,
+      spotify: submission.spotify,
+    };
+    await setDoc(ref, data);
+    return responseSuccess(submission);
   } catch (error) {
     return responseError(error);
   }

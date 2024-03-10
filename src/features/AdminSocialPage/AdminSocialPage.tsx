@@ -1,7 +1,6 @@
 import React, { ChangeEvent, useEffect, useMemo, useState } from "react";
 import { useSubmit } from "react-router-dom";
 import {
-  Avatar,
   Button,
   OutlinedInput,
   Switch,
@@ -92,19 +91,15 @@ const Page: LoaderFC = ({ loaderData }) => {
           <Table size="small">
             <TableHead>
               <TableRow>
-                <TableCell sx={{ width: "10%" }}>Icon</TableCell>
-                <TableCell sx={{ width: "15%" }}>Name</TableCell>
-                <TableCell sx={{ width: "40%" }}>Social Profile</TableCell>
-                <TableCell sx={{ width: "25%" }}>Collection ID</TableCell>
-                <TableCell sx={{ width: "10%" }}>Active</TableCell>
+                <TableCell sx={{ width: "10%" }}>Name</TableCell>
+                <TableCell sx={{ width: "65%" }}>Social Profile</TableCell>
+                <TableCell sx={{ width: "20%" }}>Collection ID</TableCell>
+                <TableCell sx={{ width: "5%" }}>Active</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {socialNetworkListForm.map((socialNetwork, index) => (
                 <TableRow key={socialNetwork.id}>
-                  <TableCell>
-                    <Avatar sx={{ width: 24, height: 24 }} src={socialNetwork.icon} />
-                  </TableCell>
                   <TableCell>{socialNetwork.name}</TableCell>
                   <TableCell>
                     <OutlinedInput

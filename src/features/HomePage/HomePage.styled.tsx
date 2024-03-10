@@ -360,3 +360,9 @@ export const BoxFlexEnd = styled(Box)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "flex-end",
 }));
+
+export const FooterContainer = styled("footer")(({ theme }) => ({
+  background: "#1E1E1E",
+  marginTop: "48px",
+  padding: "16px 0",
+}));

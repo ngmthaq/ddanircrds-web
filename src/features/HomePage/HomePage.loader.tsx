@@ -1,4 +1,5 @@
 import { LoaderFunction } from "react-router-dom";
+import { AppUtils } from "@/common/utils";
 import { AboutUsModel, SocialModel, TopBannerModel } from "@/api/models";
 import { AboutUsServices, SocialServices, TopBannerServices } from "@/api/services";
 
@@ -24,5 +25,6 @@ export const useHomePageLoader: LoaderFunction = async (loader) => {
   const banners: TopBannerModel[] = await handleGetBanners();
   const socials: SocialModel[] = await handleGetSocialList();
   const aboutUs: AboutUsModel = await handleGetAboutUs();
+  await AppUtils.delay(2);
   return { banners, socials, aboutUs };
 };

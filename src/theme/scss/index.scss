@@ -124,3 +124,23 @@ body {
 a {
   text-decoration: none;
 }
+
+.loader-1 {
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 64px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: linear-gradient(135.81deg, #f91515 16.01%, #020000 84.96%);
+  box-shadow: 0 0 0 0 #0004;
+  animation: loading1 1s infinite;
+  -webkit-animation: loading1 1s infinite;
+}
+@keyframes loading1 {
+  100% {
+    box-shadow: 0 0 0 30px #49010100;
+  }
+}

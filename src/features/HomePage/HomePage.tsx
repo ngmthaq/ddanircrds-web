@@ -6,7 +6,8 @@ import { HomePageHeader } from "./HomePageHeader.component";
 import { HomePageBanner } from "./HomePageBanner.component";
 import { HomePageSocialLinks } from "./HomePageSocialLinks.component";
 import { HomePageAboutUs } from "./HomePageAboutUs.component";
-import { HomePageForm } from "@/features/HomePage/HomePageForm.component";
+import { HomePageFooter } from "./HomePageFooter.component";
+import { HomePageForm } from "./HomePageForm.component";
 
 const Page: LoaderFC = ({ loaderData }) => {
   const { banners, socials, aboutUs }: LoaderDataType = useMemo(() => loaderData, [loaderData]);
@@ -25,6 +26,7 @@ const Page: LoaderFC = ({ loaderData }) => {
         <HomePageSocialLinks />
         <HomePageAboutUs />
         <HomePageForm />
+        <HomePageFooter />
       </BaseLayout>
     </HomePageContext.Provider>
   );
