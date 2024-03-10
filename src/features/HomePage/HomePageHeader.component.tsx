@@ -30,10 +30,10 @@ export const HomePageHeader = () => {
     <HeaderContainer component="header">
       <HeaderWrapper maxWidth="lg">
         <HeaderNavContainer>
-          <a href="javascript:void(0)" className="disabled" title={navTitle}>
+          <a href="#" className="disabled" title={navTitle}>
             Artist
           </a>
-          <a href="javascript:void(0)" className="disabled" title={navTitle}>
+          <a href="#" className="disabled" title={navTitle}>
             Release
           </a>
         </HeaderNavContainer>

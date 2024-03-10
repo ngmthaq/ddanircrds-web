@@ -44,7 +44,7 @@ export const HomePageSocialLinks = () => {
           {socials.map((social) => (
             <SocialSliderItem
               key={social.id}
-              href={social.isOpen ? social.profile : "javascript:void(0)"}
+              href={social.isOpen ? social.profile : "#"}
               target={social.isOpen ? "_blank" : "_self"}
               title={
                 social.isOpen

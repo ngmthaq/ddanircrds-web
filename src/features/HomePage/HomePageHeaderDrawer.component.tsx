@@ -14,10 +14,10 @@ export const HomePageHeaderDrawer: FC<HomePageHeaderDrawerProps> = ({ open, onCl
         <img src={logo} alt="logo" />
       </MobileDrawerLogo>
       <MobileDrawerNav>
-        <a href="javascript:void(0)" className="disabled">
+        <a href="#" className="disabled">
           Artist
         </a>
-        <a href="javascript:void(0)" className="disabled">
+        <a href="#" className="disabled">
           Release
         </a>
         <a href="#about-us" onClick={onClose}>

@@ -309,7 +309,7 @@ export const FormHeadingContainer = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  margin: "0 auto",
+  margin: "0 auto 16px",
   gap: "32px",
 }));
 
@@ -332,10 +332,31 @@ export const HomePageMainButton = styled(Button)(({ theme }) => ({
   "&.MuiButton-outlined": {
     color: customPaleteColor.main,
     borderColor: customPaleteColor.main,
+
+    "& *": {
+      color: customPaleteColor.main,
+      borderColor: customPaleteColor.main,
+    },
   },
 
   "&.MuiButton-contained": {
     color: "#fff",
     background: customPaleteColor.main,
+
+    "& *": {
+      color: "#fff",
+    },
   },
+}));
+
+export const BoxFlexCenter = styled(Box)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+}));
+
+export const BoxFlexEnd = styled(Box)(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "flex-end",
 }));

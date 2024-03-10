@@ -33,3 +33,11 @@ export function parseJson<T>(json: string, defaultValue: T): T {
 export function paginate<T>(input: T[], page: number, limit: number) {
   return input.slice((page - 1) * limit, page * limit);
 }
+
+export function arrayFromNumber(number: number): number[] {
+  const output = [];
+  for (let index = 1; index <= number; index++) {
+    output.push(index);
+  }
+  return output;
+}
